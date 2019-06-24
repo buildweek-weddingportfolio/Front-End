@@ -8,7 +8,7 @@ export const getPlanners = () => dispatch => {
     dispatch({ type: FETCH_DATA_START})
 
     axiosWithAuth()
-        .get("/pokemon/ditto")
+        .get("/posts/all")
         .then(res => {
             console.log(res);
             dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data })
@@ -27,7 +27,7 @@ export const login = creds => dispatch => {
     dispatch({ type: LOGIN_START})
 
     axiosWithAuth()
-        .post("/login", creds)
+        .post("/auth/login", creds)
         .then(res => {
             console.log(res);
             localStorage.setItem("token", res.data);
@@ -47,7 +47,7 @@ export const postEvent = () => dispatch => {
     dispatch({ type: POST_EVENT_START})
 
     axiosWithAuth()
-        .post("/pokemon/ditto")
+        .post("/posts")
         .then(res => {
             console.log(res);
             dispatch({ type: POST_EVENT_SUCCESS, payload: res.data });
@@ -61,12 +61,12 @@ export const postEvent = () => dispatch => {
 export const DELETE_EVENT_START = "DELETE_EVENT_START"
 export const DELETE_EVENT_SUCCESS = "DELETE_EVENT_SUCCESS"
 export const DELETE_EVENT_FAILURE = "DELETE_EVENT_FAILURE"
-export const deleteEvent = () => dispatch => {
+export const deleteEvent = id => dispatch => {
 
     dispatch({ type: DELETE_EVENT_START})
 
     axiosWithAuth()
-        .delete("/pokemon/ditto")
+        .delete(`/posts/${id}`)
         .then(res => {
             console.log(res);
             dispatch({ type: DELETE_EVENT_SUCCESS, payload: res.data });
@@ -81,12 +81,13 @@ export const deleteEvent = () => dispatch => {
 export const PUT_EVENT_START = "PUT_EVENT_START"
 export const PUT_EVENT_SUCCESS = "PUT_EVENT_SUCCESS"
 export const PUT_EVENT_FAILURE = "PUT_EVENT_FAILURE"
-export const putEvent = () => dispatch => {
+export const putEvent = event => dispatch => {
 
     dispatch({ type: PUT_EVENT_START})
+    const id = event.id;
 
     axiosWithAuth()
-        .put("/pokemon/ditto")
+        .delete(`/posts/${id}`)
         .then(res => {
             console.log(res);
             dispatch({ type: PUT_EVENT_SUCCESS, payload: res.data });

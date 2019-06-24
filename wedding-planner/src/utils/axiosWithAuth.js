@@ -8,6 +8,6 @@ export const axiosWithAuth = () => {
         headers: {
             Authorization: token,
         },
-        baseURL: "https://pokeapi.co/api/v2",
+        baseURL: "https://lambda-wedding-planner.herokuapp.com/api",
     });
 }
