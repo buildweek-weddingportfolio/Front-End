@@ -22,6 +22,7 @@ class Register extends React.Component {
                         name="username"
                         value={this.state.username}
                         onChange={this.handleChanges}
+                        required
                     />
                     <input 
                         type="password"
@@ -29,6 +30,7 @@ class Register extends React.Component {
                         name="password"
                         value={this.state.password}
                         onChange={this.handleChanges}
+                        required
                     />
                     <input 
                         type="email"
@@ -36,6 +38,7 @@ class Register extends React.Component {
                         name="email"
                         value={this.state.email}
                         onChange={this.handleChanges}
+                        required
                     />
                     <input 
                         type="text"
@@ -43,11 +46,13 @@ class Register extends React.Component {
                         name="city"
                         value={this.state.city}
                         onChange={this.handleChanges}
+                        required
                     />
                     <select 
                         name="state"
                         value={this.state.state}
                         onChange={this.handleChanges}
+                        required
                     >
                         <option value="AL">AL</option>
                         <option value="AK">AK</option>
@@ -128,6 +133,8 @@ class Register extends React.Component {
         const creds = {
             username: this.state.username,
             password: this.state.password,
+            email: this.state.email,
+            location: `${this.state.city}, ${this.state.state}`,
         }
         this.props.register(creds);
     }
