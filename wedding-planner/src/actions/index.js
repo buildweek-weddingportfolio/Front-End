@@ -16,7 +16,7 @@ export const login = creds => dispatch => {
         })
         .catch(err => {
             console.log(err);
-            dispatch({ type: LOGIN_FAILURE, payload: err});
+            dispatch({ type: LOGIN_FAILURE, payload: `${err}`});
         })
 }
 
@@ -38,7 +38,7 @@ export const register = creds => dispatch => {
         })
         .catch(err => {
             console.log(err);
-            dispatch({ type: REGISTER_FAILURE, payload: err});
+            dispatch({ type: REGISTER_FAILURE, payload: `${err}`});
         })
 }
 
@@ -52,7 +52,7 @@ export const getPlanners = () => dispatch => {
     dispatch({ type: FETCH_DATA_START})
 
     axiosWithAuth()
-        .get("/possts/all")
+        .get("/posts/all")
         .then(res => {
             console.log(res);
             dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data })
@@ -79,7 +79,7 @@ export const postEvent = () => dispatch => {
         })
         .catch(err => {
             console.log(err);
-            dispatch({ type: POST_EVENT_FAILURE, payload: err});
+            dispatch({ type: POST_EVENT_FAILURE, payload: `${err}`});
         })
 }
 
@@ -98,7 +98,7 @@ export const deleteEvent = id => dispatch => {
         })
         .catch(err => {
             console.log(err);
-            dispatch({ type: DELETE_EVENT_FAILURE, payload: err});
+            dispatch({ type: DELETE_EVENT_FAILURE, payload: `${err}`});
         })
 }
 
@@ -119,6 +119,6 @@ export const putEvent = event => dispatch => {
         })
         .catch(err => {
             console.log(err);
-            dispatch({ type: PUT_EVENT_FAILURE, payload: err});
+            dispatch({ type: PUT_EVENT_FAILURE, payload: `${err}`});
         })
 }
