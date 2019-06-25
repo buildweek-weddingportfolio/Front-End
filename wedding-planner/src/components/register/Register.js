@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { register } from "../../actions";
+import "./Register.scss";
 
 class Register extends React.Component {
     state = {
