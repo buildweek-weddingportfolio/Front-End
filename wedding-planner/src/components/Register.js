@@ -139,7 +139,7 @@ class Register extends React.Component {
         this.props.register(creds)
             .then(res => {
                 if (res) {
-                this.props.history.push("/dashboard");
+                this.props.history.push(`/dashboard/${res.data.user_id}`);
             }});
     }
 
