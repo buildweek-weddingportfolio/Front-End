@@ -136,7 +136,11 @@ class Register extends React.Component {
             email: this.state.email,
             location: `${this.state.city}, ${this.state.state}`,
         }
-        this.props.register(creds);
+        this.props.register(creds)
+            .then(res => {
+                if (res) {
+                this.props.history.push("/dashboard");
+            }});
     }
 
 }
