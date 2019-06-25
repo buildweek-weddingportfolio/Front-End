@@ -29,6 +29,7 @@ class Login extends React.Component {
                         required
                     />
                     <button type="submit">Log In</button>
+                    <p className="error">{this.props.error}</p>
                 </form>
             </div>
         );
@@ -39,7 +40,7 @@ class Login extends React.Component {
         this.setState({
             ...this.state,
             [e.target.name]: e.target.value
-        })
+        });
     }
 
     login = e => {
@@ -51,9 +52,14 @@ class Login extends React.Component {
         this.props.login(creds)
             .then(res => {
                 if (res) {
-                    this.props.history.push("/dashboard");
+                    const username = this.state.username;
+                    this.props.history.push(`/dashboard/${username}`);
                 }
             });
+        this.setState({
+            username: "",
+            password: "",
+        })
     }
 
 }

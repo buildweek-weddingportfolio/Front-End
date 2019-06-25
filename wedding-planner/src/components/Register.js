@@ -115,6 +115,7 @@ class Register extends React.Component {
                         <option value="WY">WY</option>
                     </select>
                     <button type="submit">Register</button>
+                    <p className="error">{this.props.error}</p>
                 </form>
             </div>
         );
@@ -141,6 +142,13 @@ class Register extends React.Component {
                 if (res) {
                 this.props.history.push(`/dashboard/${res.data.user_id}`);
             }});
+        this.setState({
+            username: "",
+            password: "",
+            email: "",
+            city: "",
+            state: "",
+        })
     }
 
 }

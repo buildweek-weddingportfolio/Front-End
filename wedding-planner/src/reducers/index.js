@@ -11,12 +11,13 @@ import {
 
 const initialState = {
     planners:[],
+    userId: null,
     loggingIn: false,
     fetchingPlanners: false,
     postingEvent: false,
     puttingEvent: false,
     deletingEvent: false,
-    error:''
+    error: null
 }
 
 
@@ -26,13 +27,13 @@ export const reducer = (state = initialState, action) => {
             return{
                 ...state,
                 loggingIn: true,
-                error:"",
+                error: null,
             }
         case LOGIN_SUCCESS:
             return{
                 ...state, 
                 loggingIn: false,
-                error:'',
+                userId: action.payload
             }
         
         case LOGIN_FAILURE:
@@ -47,13 +48,13 @@ export const reducer = (state = initialState, action) => {
             return{
                 ...state,
                 loggingIn: true,
-                error:"",
+                error: null,
             }
         case REGISTER_SUCCESS:
             return{
                 ...state, 
                 loggingIn: false,
-                error:'',
+                userId: action.payload
             }
         
         case REGISTER_FAILURE:
@@ -68,7 +69,7 @@ export const reducer = (state = initialState, action) => {
             return{
                 ...state,
                 fetchingPlanners: true,
-                error:'',
+                error: null,
             }
         case FETCH_DATA_SUCCESS:
             return{
@@ -88,7 +89,7 @@ export const reducer = (state = initialState, action) => {
             return{
                 ...state,
                 postingEvent: true,
-                error:'',
+                error: null,
             }
         case POST_EVENT_SUCCESS:
             return{
@@ -108,7 +109,7 @@ export const reducer = (state = initialState, action) => {
             return{
                 ...state,
                 puttingEvent: true,
-                error:'',
+                error: null,
             }
         case PUT_EVENT_SUCCESS:
             return{
@@ -128,7 +129,7 @@ export const reducer = (state = initialState, action) => {
             return{
                 ...state,
                 deletingEvent: true,
-                error:'',
+                error: null,
             }
         case DELETE_EVENT_SUCCESS:
             return{

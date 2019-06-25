@@ -10,9 +10,9 @@ export const login = creds => dispatch => {
     return axiosWithAuth()
         .post("/auth/login", creds)
         .then(res => {
-            console.log(res);
+            console.log(res.data);
             localStorage.setItem("token", res.data.token);
-            dispatch({ type: LOGIN_SUCCESS, payload: res.data.token});
+            dispatch({ type: LOGIN_SUCCESS, payload: res.data.userid});
             return true;
         })
         .catch(err => {
@@ -35,7 +35,7 @@ export const register = creds => dispatch => {
         .then(res => {
             console.log(res);
             localStorage.setItem("token", res.data.token);
-            dispatch({ type: REGISTER_SUCCESS});
+            dispatch({ type: REGISTER_SUCCESS, payload: res.data.userid});
             return true;
         })
         .catch(err => {
@@ -66,6 +66,7 @@ export const getPlanners = () => dispatch => {
 }
 
 
+
 export const POST_EVENT_START = "POST_EVENT_START"
 export const POST_EVENT_SUCCESS = "POST_EVENT_SUCCESS"
 export const POST_EVENT_FAILURE = "POST_EVENT_FAILURE"
@@ -91,7 +92,7 @@ export const DELETE_EVENT_FAILURE = "DELETE_EVENT_FAILURE"
 export const deleteEvent = id => dispatch => {
 
     dispatch({ type: DELETE_EVENT_START})
-   
+
 
     axiosWithAuth()
         .delete(`/posts/${id}`, id)
