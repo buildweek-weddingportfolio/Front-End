@@ -1,6 +1,7 @@
 import React from 'react';
 import AddEvent from '../AddEvent';
-
+import {Link,Route} from 'react-router-dom';
+import UpdateEvent from '../UpdateEvent';
 
 
 const DashBoardBody = (props) =>{
@@ -9,8 +10,10 @@ const DashBoardBody = (props) =>{
         e.preventDefault();
         props.deleteEvent(id);
     }
+    
     return(
         <div>
+            <Route path="/dashboard/:id/update/:eventId" render={ props => <UpdateEvent props={props} /> }  />
             <AddEvent />
             {props.events.map((event) =>(
                 <div key={event.id}>
@@ -24,8 +27,8 @@ const DashBoardBody = (props) =>{
                     <div>{event.wedding_location}</div>
                     <div>{event.wedding_photographer}</div>
                     <div>
-                        <div>trash</div>
                         <div><button onClick={(e) => deleteEv(e,event.id)}>delete</button></div>
+                        <Link to={`/dashboard/${event.user_id}/update/${event.id}`}>Update</Link>
                     </div>
                 </div>
             ))}
