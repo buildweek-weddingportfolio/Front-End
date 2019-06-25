@@ -153,8 +153,11 @@ class Register extends React.Component {
 
 }
 
-const mapStateToProps = () => {
-    return {};
+const mapStateToProps = ({loggingIn, error}) => {
+    return {
+        loggingIn,
+        error
+    };
 }
 
 export default connect(mapStateToProps, {register} )(Register);

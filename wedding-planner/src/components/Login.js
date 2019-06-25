@@ -21,7 +21,7 @@ class Login extends React.Component {
                         required
                     />
                     <input 
-                        type="text"
+                        type="password"
                         placeholder="password"
                         name="password"
                         value={this.state.password}
@@ -64,8 +64,11 @@ class Login extends React.Component {
 
 }
 
-const mapStateToProps = () => {
-    return {};
+const mapStateToProps = ({loggingIn, error}) => {
+    return {
+        loggingIn,
+        error
+    };
 }
 
 export default connect(mapStateToProps, {login} )(Login);
