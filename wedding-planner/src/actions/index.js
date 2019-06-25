@@ -93,7 +93,7 @@ export const deleteEvent = id => dispatch => {
     dispatch({ type: DELETE_EVENT_START})
 
     axiosWithAuth()
-        .delete(`/posts/${id}`)
+        .delete(`/posts/${id}`, id)
         .then(res => {
             console.log(res);
             dispatch({ type: DELETE_EVENT_SUCCESS, payload: res.data });
