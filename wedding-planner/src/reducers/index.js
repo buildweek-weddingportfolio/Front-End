@@ -34,6 +34,7 @@ export const reducer = (state = initialState, action) => {
                 error: action.payload
             }
 
+            
         case LOGIN_START:
             return{
                 ...state,

@@ -48,7 +48,12 @@ class Login extends React.Component {
             username: this.state.username,
             password: this.state.password,
         }
-        this.props.login(creds);
+        this.props.login(creds)
+            .then(res => {
+                if (res) {
+                    this.props.history.push("/dashboard");
+                }
+            });
     }
 
 }
