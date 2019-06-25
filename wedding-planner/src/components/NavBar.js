@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 
+// Links need logic to display or not display depending on whether user is logged in.
+
 class NavBar extends React.Component{
     
     render() {

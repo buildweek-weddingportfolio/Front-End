@@ -55,18 +55,18 @@ class Login extends React.Component {
         this.props.login(creds)
             .then(res => {
                 if (res) {
-                    const username = this.state.username;
-                    this.props.history.push(`/dashboard/${username}`);
+                    this.props.history.push(`/dashboard/${this.props.userId}`);
                 }
             });
     }
 
 }
 
-const mapStateToProps = ({loggingIn, error}) => {
+const mapStateToProps = ({loggingIn, error, userId}) => {
     return {
         loggingIn,
-        error
+        error,
+        userId
     };
 }
 
