@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Login from "./components/Login";
-import Register from "./components/Register";
+import Login from "./components/login/Login";
+import Register from "./components/register/Register";
 import AddEvent from "./components/AddEvent";
 import PlannerEvents from "./components/PlannerEvents";
 import DashBoard from './components/dashboard/DashBoard'
