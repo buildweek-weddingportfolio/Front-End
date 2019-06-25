@@ -8,6 +8,6 @@ export const axiosWithAuth = () => {
         headers: {
             Authorization: token,
         },
-        baseURL: "https://lambda-wedding-planner.herokuapp.com/api",
+        baseURL: "https://weddingplanner-database.herokuapp.com/api",
     });
 }

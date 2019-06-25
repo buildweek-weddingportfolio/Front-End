@@ -10,14 +10,16 @@ export const login = creds => dispatch => {
     return axiosWithAuth()
         .post("/auth/login", creds)
         .then(res => {
-            console.log(res);
+            console.log(res.data);
             localStorage.setItem("token", res.data.token);
-            dispatch({ type: LOGIN_SUCCESS, payload: res.data.token});
+            dispatch({ type: LOGIN_SUCCESS, payload: res.data.userid});
             return true;
         })
         .catch(err => {
-            console.log(err);
-            dispatch({ type: LOGIN_FAILURE, payload: `${err}`});
+            if (err.response.data.error) {
+                console.log(err.response.data.error);
+                dispatch({ type: LOGIN_FAILURE, payload: `${err.response.data.error}`});
+            } else { dispatch({ type: LOGIN_FAILURE, payload: `${err}`}); }
         })
 }
 
@@ -31,16 +33,18 @@ export const register = creds => dispatch => {
     dispatch({ type: REGISTER_START})
 
     return axiosWithAuth()
-        .post("/auth/register", creds)
+        .post("/auth/regsister", creds)
         .then(res => {
             console.log(res);
             localStorage.setItem("token", res.data.token);
-            dispatch({ type: REGISTER_SUCCESS});
+            dispatch({ type: REGISTER_SUCCESS, payload: res.data.userid});
             return true;
         })
         .catch(err => {
-            console.log(err);
-            dispatch({ type: REGISTER_FAILURE, payload: `${err}`});
+            if (err.response.data.error) {
+                console.log(err.response.data.error);
+                dispatch({ type: REGISTER_FAILURE, payload: `${err.response.data.error}`});
+            } else { dispatch({ type: REGISTER_FAILURE, payload: `${err}`}); }
         })
 }
 
@@ -60,10 +64,13 @@ export const getPlanners = () => dispatch => {
             dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data })
         })
         .catch(err => {
-            console.log(err);
-            dispatch({ type: FETCH_DATA_FAILURE, payload: `${err}`})
+            if (err.response.data.error) {
+                console.log(err.response.data.error);
+                dispatch({ type: FETCH_DATA_FAILURE, payload: `${err.response.data.error}`});
+            } else { dispatch({ type: FETCH_DATA_FAILURE, payload: `${err}`}); }
         })
 }
+
 
 
 export const POST_EVENT_START = "POST_EVENT_START"
@@ -80,8 +87,10 @@ export const postEvent = event => dispatch => {
             dispatch({ type: POST_EVENT_SUCCESS, payload: res.data });
         })
         .catch(err => {
-            console.log(err);
-            dispatch({ type: POST_EVENT_FAILURE, payload: `${err}`});
+            if (err.response.data.error) {
+                console.log(err.response.data.error);
+                dispatch({ type: POST_EVENT_FAILURE, payload: `${err.response.data.error}`});
+            } else { dispatch({ type: POST_EVENT_FAILURE, payload: `${err}`}); }
         })
 }
 
@@ -91,7 +100,7 @@ export const DELETE_EVENT_FAILURE = "DELETE_EVENT_FAILURE"
 export const deleteEvent = id => dispatch => {
 
     dispatch({ type: DELETE_EVENT_START})
-   
+
 
     axiosWithAuth()
         .delete(`/posts/${id}`, id)
@@ -100,8 +109,10 @@ export const deleteEvent = id => dispatch => {
             dispatch({ type: DELETE_EVENT_SUCCESS, payload: res.data });
         })
         .catch(err => {
-            console.log(err);
-            dispatch({ type: DELETE_EVENT_FAILURE, payload: `${err}`});
+            if (err.response.data.error) {
+                console.log(err.response.data.error);
+                dispatch({ type: DELETE_EVENT_FAILURE, payload: `${err.response.data.error}`});
+            } else { dispatch({ type: DELETE_EVENT_FAILURE, payload: `${err}`}); }
         })
 }
 
@@ -121,7 +132,9 @@ export const putEvent = event => dispatch => {
             dispatch({ type: PUT_EVENT_SUCCESS, payload: res.data });
         })
         .catch(err => {
-            console.log(err);
-            dispatch({ type: PUT_EVENT_FAILURE, payload: `${err}`});
+            if (err.response.data.error) {
+                console.log(err.response.data.error);
+                dispatch({ type: PUT_EVENT_FAILURE, payload: `${err.response.data.error}`});
+            } else { dispatch({ type: PUT_EVENT_FAILURE, payload: `${err}`}); }
         })
 }
