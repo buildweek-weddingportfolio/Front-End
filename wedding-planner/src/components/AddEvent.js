@@ -19,7 +19,10 @@ import { connect } from 'react-redux';
          e.preventDefault(e)
          console.log(this.state.couple_name)
          const newItem ={
-             couple_name: this.state.couple_name
+             couple_name: this.state.couple_name,
+             wedding_theme: this.state.wedding_theme,
+             wedding_date: this.state.wedding_date,
+             wedding_location: this.state.wedding_location
          }
 
          this.props.postEvent(newItem)
@@ -43,6 +46,7 @@ import { connect } from 'react-redux';
                     onChange={this.changeHandler}
                     name="couple_name"
                     placeholder="Couples Names"
+                    required
                  />
                  <input 
                     type="text"
