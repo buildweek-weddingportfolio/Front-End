@@ -117,7 +117,14 @@ class Register extends React.Component {
                             <option value="WI">WI</option>
                             <option value="WY">WY</option>
                         </select>
-                        <button type="submit">Register</button>
+                        <button className={
+                                    this.state.username.length === 0 ||
+                                    this.state.password.length === 0 ||
+                                    this.state.email.length ===    0 ||
+                                    this.state.city.length ===     0 ?
+                                        null : "clickable"
+                            } 
+                            type="submit">Register</button>
                     </form>
                 </div>
             </div>
