@@ -18,6 +18,7 @@ class Login extends React.Component {
                         name="username"
                         value={this.state.username}
                         onChange={this.handleChanges}
+                        required
                     />
                     <input 
                         type="text"
@@ -25,6 +26,7 @@ class Login extends React.Component {
                         name="password"
                         value={this.state.password}
                         onChange={this.handleChanges}
+                        required
                     />
                     <button type="submit">Log In</button>
                 </form>
@@ -46,11 +48,18 @@ class Login extends React.Component {
             username: this.state.username,
             password: this.state.password,
         }
-        this.props.login(creds);
+        this.props.login(creds)
+            .then(res => {
+                if (res) {
+                    this.props.history.push("/dashboard");
+                }
+            });
     }
 
 }
 
-const mapStateToProps = () => {}
+const mapStateToProps = () => {
+    return {};
+}
 
 export default connect(mapStateToProps, {login} )(Login);
