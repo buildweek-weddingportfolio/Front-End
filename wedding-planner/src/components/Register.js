@@ -142,13 +142,6 @@ class Register extends React.Component {
                 if (res) {
                 this.props.history.push(`/dashboard/${res.data.user_id}`);
             }});
-        this.setState({
-            username: "",
-            password: "",
-            email: "",
-            city: "",
-            state: "",
-        })
     }
 
 }

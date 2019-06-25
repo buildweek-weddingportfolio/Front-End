@@ -56,10 +56,6 @@ class Login extends React.Component {
                     this.props.history.push(`/dashboard/${username}`);
                 }
             });
-        this.setState({
-            username: "",
-            password: "",
-        })
     }
 
 }
