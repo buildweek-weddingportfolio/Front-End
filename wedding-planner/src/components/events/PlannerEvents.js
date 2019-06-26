@@ -3,7 +3,7 @@ import React from 'react';
 import PlannerCard from './PlannerCard';
 
 import {connect} from 'react-redux';
-import{getPlanners} from '../actions';
+import{getPlanners} from '../../actions';
 
 
 
