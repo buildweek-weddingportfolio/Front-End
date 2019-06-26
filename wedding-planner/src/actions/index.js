@@ -95,11 +95,12 @@ export const getPlanners = () => dispatch => {
 
     dispatch({ type: FETCH_DATA_START})
 
-    axiosWithAuth()
+    return axiosWithAuth()
         .get("/posts/all")
         .then(res => {
             console.log(res);
             dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data })
+            return true;
         })
         .catch(err => {
             if (err.response.data.error) {

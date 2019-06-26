@@ -21,21 +21,30 @@ class UpdateEvent extends React.Component{
 
     update = (e) =>{
         e.preventDefault();
-        const id = this.props.props.match.params.eventId;
+        
+        const eventId = this.props.props.match.params.eventId;
+        const id = localStorage.getItem('userId');
         const event = {
-            id:id, 
+            id:eventId, 
             couple_name:this.state.couple_name,
             item_photo:null,
             wedding_date:this.state.wedding_date,
             wedding_location:this.state.location,
             wedding_photographer:this.state.photographer,
-            wedding_theme:this.state.wedding_theme
+            wedding_theme:this.state.wedding_theme,
+            user_id: id
         }
 
         if(this.state.couple_name.trim() !== ''){
             this.props.putEvent(event).then(res =>{
-                if(res)
-                this.props.history.push(`/dashboard/${id}`)
+                if(res){
+                    this.props.getPlanners().then(res =>{
+                        if(res){
+
+                            this.props.props.history.push(`/dashboard/${id}`)
+                        }
+                    })
+                }
             });
 
         }
