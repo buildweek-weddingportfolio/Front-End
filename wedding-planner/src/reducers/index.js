@@ -4,6 +4,7 @@ import {
     LOGOUT_START, LOGOUT_SUCCESS, LOGOUT_FAILURE,
     LOGIN_FIX_START, LOGIN_FIX_SUCCESS, LOGIN_FIX_FAILURE,
     FETCH_DATA_START, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE,
+    EDIT_SEARCH_START, EDIT_SEARCH_SUCCESS, EDIT_SEARCH_FAILURE,
     POST_EVENT_START, POST_EVENT_SUCCESS, POST_EVENT_FAILURE,
     PUT_EVENT_START, PUT_EVENT_SUCCESS, PUT_EVENT_FAILURE,
     DELETE_EVENT_START, DELETE_EVENT_SUCCESS, DELETE_EVENT_FAILURE,
@@ -13,9 +14,15 @@ import {
 
 const initialState = {
     planners: [],
+    searchObj: {
+        coupleName: "",
+        location: "",
+        theme: "",
+    },
     loggedBoolean: false,
     loggingIn: false,
     loggingOut: false,
+    editingSearch: false,
     fetchingPlanners: false,
     postingEvent: false,
     puttingEvent: false,
@@ -26,6 +33,9 @@ const initialState = {
 
 export const reducer = (state = initialState, action) => {
     switch(action.type){
+
+        //================================LOGIN================================//
+
         case LOGIN_START:
             return{
                 ...state,
@@ -48,6 +58,8 @@ export const reducer = (state = initialState, action) => {
             }
         
         
+        //================================REGISTER================================//
+
         case REGISTER_START:
             return{
                 ...state,
@@ -70,6 +82,8 @@ export const reducer = (state = initialState, action) => {
             }
 
 
+        //================================LOGOUT================================//
+
         case LOGOUT_START:
             return{
                 ...state,
@@ -90,6 +104,8 @@ export const reducer = (state = initialState, action) => {
                 error: action.payload
             }
 
+
+        //================================LOGINFIX================================//
 
         case LOGIN_FIX_START:
             return{
@@ -112,6 +128,8 @@ export const reducer = (state = initialState, action) => {
             }
 
 
+        //================================FETCHDATA================================//
+
         case FETCH_DATA_START:
             return{
                 ...state,
@@ -131,6 +149,30 @@ export const reducer = (state = initialState, action) => {
                 error: action.payload
             }
 
+
+        //================================EDITSEARCH================================//
+
+        case EDIT_SEARCH_START:
+            return{
+                ...state,
+                editingSearch: true,
+                error: null,
+            }
+        case EDIT_SEARCH_SUCCESS:
+            return{
+                ...state,
+                editingSearch: false,
+                searchObj: action.payload
+            }
+        case EDIT_SEARCH_FAILURE:
+            return{
+                ...state,
+                editingSearch: false,
+                error: action.payload
+            }
+
+
+        //================================POSTEVENT================================//
 
         case POST_EVENT_START:
             return{
@@ -152,6 +194,8 @@ export const reducer = (state = initialState, action) => {
             }
 
 
+        //================================PUTEVENT================================//
+
         case PUT_EVENT_START:
             return{
                 ...state,
@@ -170,6 +214,8 @@ export const reducer = (state = initialState, action) => {
                 error: action.payload
             }
 
+
+        //================================DELETEEVENT================================//
 
         case DELETE_EVENT_START:
             return{

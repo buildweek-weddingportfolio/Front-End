@@ -21,6 +21,7 @@ class NavBar extends React.Component{
             return (
                 <nav>
                     <img src="" alt="WeddingGram Logo" />
+                    <a href="#">Learn More</a>
                     <Link to="/">Home</Link>
                     <Link to={`/dashboard/${id}`}>Dashboard</Link>
                     <Link onClick={this.props.logout} to="/">Logout</Link>
@@ -30,6 +31,7 @@ class NavBar extends React.Component{
             return (
                 <nav>
                     <img src="" alt="WeddingGram Logo" />
+                    <a href="#">Learn More</a>
                     <Link to="/">Home</Link>
                     <Link to="/login">Login</Link>
                     <Link to="/register">Register</Link>

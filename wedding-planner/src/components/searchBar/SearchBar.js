@@ -1,6 +1,8 @@
 import React from "react";
+import { editSearch } from "../../actions";
+import { connect } from "react-redux";
 
-export default class SearchBar extends React.Component {
+class SearchBar extends React.Component {
     state = {
         coupleName: "",
         location: "",
@@ -21,7 +23,7 @@ export default class SearchBar extends React.Component {
                         value={this.state.coupleName}
                         onChange={this.handleChanges}
                     />
-                    {/* <label for="location">Location</label>
+                    <label for="location">Location</label>
                     <input 
                         type="text"
                         id="location"
@@ -36,7 +38,8 @@ export default class SearchBar extends React.Component {
                         name="theme"
                         value={this.state.theme}
                         onChange={this.handleChanges}
-                    /> */}
+                    />
+                    <button type="submit">Search</button>
                 </form>
             </div>
         );
@@ -52,6 +55,20 @@ export default class SearchBar extends React.Component {
 
     search = e => {
         e.preventDefault();
-        
+        this.props.editSearch(this.state)
+    }
+
+    componentWillUnmount() {
+        this.props.editSearch({
+            coupleName: "",
+            location: "",
+            theme: "",
+        })
     }
 }
+
+const mapStateToProps = state => {
+    return {}
+}
+
+export default connect (mapStateToProps, { editSearch })(SearchBar);

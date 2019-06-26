@@ -77,7 +77,7 @@ export const logout = () => dispatch => {
 
 export const LOGIN_FIX_START = "LOGIN_FIX_START"
 export const LOGIN_FIX_SUCCESS = "LOGIN_FIX_SUCCESS"
-export const LOGIN_FIX_FAILURE = "LOGIN_FIX_FAILURE" // I don't think Logging out should ever fail . . .
+export const LOGIN_FIX_FAILURE = "LOGIN_FIX_FAILURE" // I don't think this should ever fail . . .
 export const loginFix = id => dispatch => {
     
     dispatch({ type: LOGIN_FIX_START });
@@ -95,11 +95,12 @@ export const getPlanners = () => dispatch => {
 
     dispatch({ type: FETCH_DATA_START})
 
-    axiosWithAuth()
+    return axiosWithAuth()
         .get("/posts/all")
         .then(res => {
             console.log(res);
-            dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data })
+            dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data });
+            return true;
         })
         .catch(err => {
             if (err.response.data.error) {
@@ -107,6 +108,19 @@ export const getPlanners = () => dispatch => {
                 dispatch({ type: FETCH_DATA_FAILURE, payload: `${err.response.data.error}`});
             } else { dispatch({ type: FETCH_DATA_FAILURE, payload: `${err}`}); }
         })
+}
+
+
+
+//================================EDITSEARCH================================//
+
+export const EDIT_SEARCH_START = "EDIT_SEARCH_START"
+export const EDIT_SEARCH_SUCCESS = "EDIT_SEARCH_SUCCESS"
+export const EDIT_SEARCH_FAILURE = "EDIT_SEARCH_FAILURE" // I don't think this should ever fail . . .
+export const editSearch = searchObj => dispatch => {
+    
+    dispatch({ type: EDIT_SEARCH_START });
+    setTimeout(() => dispatch({ type: EDIT_SEARCH_SUCCESS, payload: searchObj}), 500);
 }
 
 
