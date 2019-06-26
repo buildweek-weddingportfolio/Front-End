@@ -21,9 +21,10 @@ class DashBoard extends React.Component{
              const events = this.props.planners.filter(event => `${event.user_id}` === id)
              return(
                  <div className="dashBoard-container">
-                     <DashBoardBody events={events}  id={id} props={this.props}
+                     <DashBoardBody events={events}
                      deleteEvent={this.props.deleteEvent}
                      update={this.props.putEvent}
+                     props={this.props}
                      />
                      <DashBoardFooter />
                  </div>

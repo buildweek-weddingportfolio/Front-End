@@ -25,7 +25,7 @@ class AddEvent extends React.Component{
         }
 
         this.props.postEvent(newItem).then(res => {
-            const id = 7;
+            const id = localStorage.getItem('userId');
             if (res) {
                this.props.props.history.push(`/dashboard/${id}`)
             }

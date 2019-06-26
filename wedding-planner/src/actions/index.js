@@ -99,7 +99,7 @@ export const getPlanners = () => dispatch => {
         .get("/posts/all")
         .then(res => {
             console.log(res);
-            dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data });
+            dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data })
             return true;
         })
         .catch(err => {
