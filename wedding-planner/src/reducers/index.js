@@ -115,7 +115,6 @@ export const reducer = (state = initialState, action) => {
             return{
                 ...state,
                 puttingEvent: false,
-                planners: action.payload
             }
         case PUT_EVENT_FAILURE:
             return{
@@ -132,10 +131,11 @@ export const reducer = (state = initialState, action) => {
                 error: null,
             }
         case DELETE_EVENT_SUCCESS:
+            const newPlanners = state.planners.filter(event => event.id !== action.payload);
             return{
                 ...state,
                 deletingEvent: false,
-                planners: action.payload
+                planners: newPlanners
             }
         case DELETE_EVENT_FAILURE:
             return{

@@ -33,7 +33,7 @@ export const register = creds => dispatch => {
     dispatch({ type: REGISTER_START})
 
     return axiosWithAuth()
-        .post("/auth/regsister", creds)
+        .post("/auth/register", creds)
         .then(res => {
             console.log(res);
             localStorage.setItem("token", res.data.token);
@@ -107,7 +107,7 @@ export const deleteEvent = id => dispatch => {
         .delete(`/posts/${id}`, id)
         .then(res => {
             console.log(res);
-            dispatch({ type: DELETE_EVENT_SUCCESS, payload: res.data });
+            dispatch({ type: DELETE_EVENT_SUCCESS, payload: id });
         })
         .catch(err => {
             if (err.response.data.error) {
@@ -130,7 +130,8 @@ export const putEvent = event => dispatch => {
         .put(`/posts/${id}`, event)
         .then(res => {
             console.log(res);
-            dispatch({ type: PUT_EVENT_SUCCESS, payload: res.data });
+            dispatch({ type: PUT_EVENT_SUCCESS });
+            getPlanners();
         })
         .catch(err => {
             if (err.response.data.error) {
