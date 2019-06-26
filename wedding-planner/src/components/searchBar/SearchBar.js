@@ -21,7 +21,7 @@ export default class SearchBar extends React.Component {
                         value={this.state.coupleName}
                         onChange={this.handleChanges}
                     />
-                    <label for="location">Location</label>
+                    {/* <label for="location">Location</label>
                     <input 
                         type="text"
                         id="location"
@@ -36,7 +36,7 @@ export default class SearchBar extends React.Component {
                         name="theme"
                         value={this.state.theme}
                         onChange={this.handleChanges}
-                    />
+                    /> */}
                 </form>
             </div>
         );
