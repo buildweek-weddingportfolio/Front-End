@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {getPlanners, deleteEvent, putEvent} from '../../actions';
-import DashBoardHeader from './DashBoardHeader';
 import DashBoardBody from './DashBoardBody';
 import DashBoardFooter from './DashBoardFooter';
+import './dashboard.scss';
 
 
 class DashBoard extends React.Component{
@@ -16,25 +16,19 @@ class DashBoard extends React.Component{
 
 
     render(){
-    
 
          const id = this.props.match.params.id;
-         if(!this.props.planners){
-             return <h2>.....loading</h2>
-         }else{
-
              const events = this.props.planners.filter(event => `${event.user_id}` === id)
              return(
                  <div className="dashBoard-container">
-                     <DashBoardHeader events={events}/>
-                     <DashBoardBody events={events} 
+                     <DashBoardBody events={events}  id={id} props={this.props}
                      deleteEvent={this.props.deleteEvent}
                      update={this.props.putEvent}
                      />
                      <DashBoardFooter />
                  </div>
              )
-         }
+         
 
      }
 }
