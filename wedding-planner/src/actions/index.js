@@ -1,5 +1,9 @@
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
+
+
+//================================LOGIN================================//
+
 export const LOGIN_START = "LOGIN_START"
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
 export const LOGIN_FAILURE = "LOGIN_FAILURE"
@@ -12,7 +16,8 @@ export const login = creds => dispatch => {
         .then(res => {
             console.log(res.data);
             localStorage.setItem("token", res.data.token);
-            dispatch({ type: LOGIN_SUCCESS, payload: res.data.userid});
+            localStorage.setItem("userId", res.data.userId);
+            dispatch({ type: LOGIN_SUCCESS });
             return true;
         })
         .catch(err => {
@@ -24,6 +29,8 @@ export const login = creds => dispatch => {
 }
 
 
+
+//================================REGISTER================================//
 
 export const REGISTER_START = "REGISTER_START"
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS"
@@ -37,7 +44,8 @@ export const register = creds => dispatch => {
         .then(res => {
             console.log(res);
             localStorage.setItem("token", res.data.token);
-            dispatch({ type: REGISTER_SUCCESS, payload: res.data.id});
+            localStorage.setItem("userId", res.data.id);
+            dispatch({ type: REGISTER_SUCCESS });
             return true;
         })
         .catch(err => {
@@ -49,6 +57,23 @@ export const register = creds => dispatch => {
 }
 
 
+
+//================================LOGOUT================================//
+
+export const LOGOUT_START = "LOGOUT_START"
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS"
+export const LOGOUT_FAILURE = "LOGOUT_FAILURE" // I don't think Logging out should ever fail . . .
+export const logout = () => dispatch => {
+    
+    dispatch({ type: LOGOUT_START });
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+    dispatch({ type: LOGOUT_SUCCESS });
+}
+
+
+
+//================================GETPLANNERS================================//
 
 export const FETCH_DATA_START = "FETCH_DATA_START"
 export const FETCH_DATA_SUCCESS = "FETCH_DATA_SUCCESS"
@@ -73,6 +98,8 @@ export const getPlanners = () => dispatch => {
 
 
 
+//================================POSTEVENT================================//
+
 export const POST_EVENT_START = "POST_EVENT_START"
 export const POST_EVENT_SUCCESS = "POST_EVENT_SUCCESS"
 export const POST_EVENT_FAILURE = "POST_EVENT_FAILURE"
@@ -95,6 +122,10 @@ export const postEvent = event => dispatch => {
         })
 }
 
+
+
+//================================DELETEEVENT================================//
+
 export const DELETE_EVENT_START = "DELETE_EVENT_START"
 export const DELETE_EVENT_SUCCESS = "DELETE_EVENT_SUCCESS"
 export const DELETE_EVENT_FAILURE = "DELETE_EVENT_FAILURE"
@@ -103,11 +134,12 @@ export const deleteEvent = id => dispatch => {
     dispatch({ type: DELETE_EVENT_START})
 
 
-    axiosWithAuth()
+    return axiosWithAuth()
         .delete(`/posts/${id}`, id)
         .then(res => {
             console.log(res);
             dispatch({ type: DELETE_EVENT_SUCCESS, payload: id });
+            return true;
         })
         .catch(err => {
             if (err.response.data.error) {
@@ -118,6 +150,9 @@ export const deleteEvent = id => dispatch => {
 }
 
 
+
+//================================PUTEVENT================================//
+
 export const PUT_EVENT_START = "PUT_EVENT_START"
 export const PUT_EVENT_SUCCESS = "PUT_EVENT_SUCCESS"
 export const PUT_EVENT_FAILURE = "PUT_EVENT_FAILURE"
@@ -126,12 +161,12 @@ export const putEvent = event => dispatch => {
     dispatch({ type: PUT_EVENT_START})
     const id = event.id;
 
-    axiosWithAuth()
+    return axiosWithAuth()
         .put(`/posts/${id}`, event)
         .then(res => {
             console.log(res);
             dispatch({ type: PUT_EVENT_SUCCESS });
-            getPlanners();
+            return true;
         })
         .catch(err => {
             if (err.response.data.error) {

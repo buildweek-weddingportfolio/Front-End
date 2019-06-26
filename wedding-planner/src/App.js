@@ -4,13 +4,13 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
 import NavBar from "./components/navBar/NavBar";
-import PlannerEvents from "./components/PlannerEvents";
+import PlannerEvents from "./components/events/PlannerEvents";
 import DashBoard from './components/dashboard/DashBoard'
 
 function App() {
     return (
         <Router>
-            <NavBar/>
+            <NavBar />
             <Route path= "/dashboard/:id" component={DashBoard} />
             <Route exact path="/" component={PlannerEvents} />
             <Route path="/login" component={Login} />

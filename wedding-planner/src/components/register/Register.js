@@ -150,17 +150,17 @@ class Register extends React.Component {
         this.props.register(creds)
             .then(res => {
                 if (res) {
-                this.props.history.push(`/dashboard/${this.props.userId}`);
+                    const id = localStorage.getItem("userId")
+                    this.props.history.push(`/dashboard/${id}`);
             }});
     }
 
 }
 
-const mapStateToProps = ({loggingIn, error, userId}) => {
+const mapStateToProps = ({ loggingIn, error }) => {
     return {
         loggingIn,
         error,
-        userId
     };
 }
 
