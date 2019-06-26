@@ -10,7 +10,7 @@ import {
 
 
 const initialState = {
-    planners:[],
+    planners: [],
     userId: null,
     loggingIn: false,
     fetchingPlanners: false,
@@ -95,7 +95,7 @@ export const reducer = (state = initialState, action) => {
             return{
                 ...state,
                 postingEvent: false,
-                planners: action.payload
+                planners: [...state.planners, action.payload]
             }
         case POST_EVENT_FAILURE:
             return{

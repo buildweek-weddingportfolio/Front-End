@@ -15,7 +15,7 @@ class PlannersEvents extends React.Component{
     }
 
     render(){
-        if (this.props.error !== "") {
+        if (this.props.error) {
             return <h1>{this.props.error}</h1>
         }
 
