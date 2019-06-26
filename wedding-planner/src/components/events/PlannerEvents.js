@@ -16,6 +16,9 @@ class PlannersEvents extends React.Component{
     }
 
     render(){
+
+        const planners = this.props.planners;
+
         if (this.props.error) {
             return <h1>{this.props.error}</h1>
         }
@@ -23,7 +26,7 @@ class PlannersEvents extends React.Component{
         return(
             <>
 
-            {this.props.planners.map(planner => (
+            {planners.map(planner => (
                 <div key={planner.id}>
                     <PlannerCard  planner={planner}/>
                 </div>

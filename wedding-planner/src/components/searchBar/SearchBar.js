@@ -50,4 +50,8 @@ export default class SearchBar extends React.Component {
         });
     }
 
+    search = e => {
+        e.preventDefault();
+        
+    }
 }
