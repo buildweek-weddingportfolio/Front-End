@@ -34,11 +34,9 @@ class PlannersEvents extends React.Component{
 
         return(
             <div className="home-page" >
-                <div className="events-container">
+                <div className="planners-container">
                     {planners.map(planner => (
-                        <div key={planner.id}>
-                            <PlannerCard  planner={planner}/>
-                        </div>
+                            <PlannerCard  key={planner.id} planner={planner}/>
                     ))}
                 </div>
                 <SearchBar />
