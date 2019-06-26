@@ -4,6 +4,10 @@
   pointer-events: none;
 }
 
+.spacer {
+  height: 60  px;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
