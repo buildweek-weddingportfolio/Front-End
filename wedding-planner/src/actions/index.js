@@ -14,9 +14,9 @@ export const login = creds => dispatch => {
     return axiosWithAuth()
         .post("/auth/login", creds)
         .then(res => {
-            console.log(res.data);
+            console.log(res.data.userid);
             localStorage.setItem("token", res.data.token);
-            localStorage.setItem("userId", res.data.userId);
+            localStorage.setItem("userId", res.data.userid);
             dispatch({ type: LOGIN_SUCCESS });
             return true;
         })
@@ -44,7 +44,7 @@ export const register = creds => dispatch => {
         .then(res => {
             console.log(res);
             localStorage.setItem("token", res.data.token);
-            localStorage.setItem("userId", res.data.id);
+            localStorage.setItem("userId", JSON.stringify(res.data.id));
             dispatch({ type: REGISTER_SUCCESS });
             return true;
         })
@@ -69,6 +69,19 @@ export const logout = () => dispatch => {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     dispatch({ type: LOGOUT_SUCCESS });
+}
+
+
+
+//================================LOGINFIX================================//
+
+export const LOGIN_FIX_START = "LOGIN_FIX_START"
+export const LOGIN_FIX_SUCCESS = "LOGIN_FIX_SUCCESS"
+export const LOGIN_FIX_FAILURE = "LOGIN_FIX_FAILURE" // I don't think Logging out should ever fail . . .
+export const loginFix = id => dispatch => {
+    
+    dispatch({ type: LOGIN_FIX_START });
+    dispatch({ type: LOGIN_FIX_SUCCESS, payload: id});
 }
 
 

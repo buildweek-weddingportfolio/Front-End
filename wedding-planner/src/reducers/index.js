@@ -2,6 +2,7 @@ import {
     LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE,
     REGISTER_START, REGISTER_SUCCESS, REGISTER_FAILURE,
     LOGOUT_START, LOGOUT_SUCCESS, LOGOUT_FAILURE,
+    LOGIN_FIX_START, LOGIN_FIX_SUCCESS, LOGIN_FIX_FAILURE,
     FETCH_DATA_START, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE,
     POST_EVENT_START, POST_EVENT_SUCCESS, POST_EVENT_FAILURE,
     PUT_EVENT_START, PUT_EVENT_SUCCESS, PUT_EVENT_FAILURE,
@@ -86,6 +87,27 @@ export const reducer = (state = initialState, action) => {
             return{
                 ...state,
                 loggingOut: false,
+                error: action.payload
+            }
+
+
+        case LOGIN_FIX_START:
+            return{
+                ...state,
+                loggingIn: true,
+                error: null,
+            }
+        case LOGIN_FIX_SUCCESS:
+            return{
+                ...state, 
+                loggingIn: false,
+                loggedBoolean: true
+            }
+        
+        case LOGIN_FIX_FAILURE:
+            return{
+                ...state,
+                loggingIn: false,
                 error: action.payload
             }
 
