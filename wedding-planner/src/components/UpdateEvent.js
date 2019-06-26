@@ -26,17 +26,17 @@ class UpdateEvent extends React.Component{
 
     update = (e) =>{
         e.preventDefault();
-         const id = this.props.props.match.params.eventId;
-         const event = {
-             id:id, 
-             couple_name:this.state.couple_name,
-             item_photo:null,
-             wedding_date:this.state.wedding_date,
-             wedding_location:this.state.location,
-             wedding_photographer:this.state.photographer,
-             wedding_theme:this.state.wedding_theme
-            }
-            console.log(event.couple_name)
+        const id = this.props.props.match.params.eventId;
+        const event = {
+            id:id, 
+            couple_name:this.state.couple_name,
+            item_photo:null,
+            wedding_date:this.state.wedding_date,
+            wedding_location:this.state.location,
+            wedding_photographer:this.state.photographer,
+            wedding_theme:this.state.wedding_theme
+        }
+        console.log(event.couple_name)
 
         if(this.state.couple_name.trim() !== ''){
             this.props.putEvent(event);
