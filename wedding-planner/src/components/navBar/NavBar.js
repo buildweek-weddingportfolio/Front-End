@@ -1,12 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { logout } from "../../actions";
+import { logout, loginFix } from "../../actions";
 
 
 // Links need logic to display or not display depending on whether user is logged in.
 
 class NavBar extends React.Component{
+
+    componentDidMount() {
+        const id = localStorage.getItem("userId");
+        if (id) {
+            this.props.loginFix(id)
+        }
+    }
     
     render() {
         if (this.props.loggedBoolean) {
@@ -38,4 +45,4 @@ const mapStateToProps = ({ loggedBoolean }) => {
     }
 }
 
-export default connect(mapStateToProps, { logout })(NavBar);
+export default connect(mapStateToProps, { logout, loginFix })(NavBar);
