@@ -10,7 +10,7 @@ import {
 
 
 const initialState = {
-    planners:[],
+    planners: [],
     userId: null,
     loggingIn: false,
     fetchingPlanners: false,
@@ -95,7 +95,7 @@ export const reducer = (state = initialState, action) => {
             return{
                 ...state,
                 postingEvent: false,
-                planners: action.payload
+                planners: [...state.planners, action.payload]
             }
         case POST_EVENT_FAILURE:
             return{
@@ -115,7 +115,6 @@ export const reducer = (state = initialState, action) => {
             return{
                 ...state,
                 puttingEvent: false,
-                planners: action.payload
             }
         case PUT_EVENT_FAILURE:
             return{
@@ -132,10 +131,11 @@ export const reducer = (state = initialState, action) => {
                 error: null,
             }
         case DELETE_EVENT_SUCCESS:
+            const newPlanners = state.planners.filter(event => event.id !== action.payload);
             return{
                 ...state,
                 deletingEvent: false,
-                planners: action.payload
+                planners: newPlanners
             }
         case DELETE_EVENT_FAILURE:
             return{

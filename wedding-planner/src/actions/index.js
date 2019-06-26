@@ -33,11 +33,11 @@ export const register = creds => dispatch => {
     dispatch({ type: REGISTER_START})
 
     return axiosWithAuth()
-        .post("/auth/regsister", creds)
+        .post("/auth/register", creds)
         .then(res => {
             console.log(res);
             localStorage.setItem("token", res.data.token);
-            dispatch({ type: REGISTER_SUCCESS, payload: res.data.userid});
+            dispatch({ type: REGISTER_SUCCESS, payload: res.data.id});
             return true;
         })
         .catch(err => {
@@ -80,11 +80,12 @@ export const postEvent = event => dispatch => {
 
     dispatch({ type: POST_EVENT_START})
 
-    axiosWithAuth()
+    return axiosWithAuth()
         .post("/posts", event)
         .then(res => {
             console.log(res);
             dispatch({ type: POST_EVENT_SUCCESS, payload: res.data });
+            return true;
         })
         .catch(err => {
             if (err.response.data.error) {
@@ -106,7 +107,7 @@ export const deleteEvent = id => dispatch => {
         .delete(`/posts/${id}`, id)
         .then(res => {
             console.log(res);
-            dispatch({ type: DELETE_EVENT_SUCCESS, payload: res.data });
+            dispatch({ type: DELETE_EVENT_SUCCESS, payload: id });
         })
         .catch(err => {
             if (err.response.data.error) {
@@ -126,10 +127,11 @@ export const putEvent = event => dispatch => {
     const id = event.id;
 
     axiosWithAuth()
-        .delete(`/posts/${id}`, event)
+        .put(`/posts/${id}`, event)
         .then(res => {
             console.log(res);
-            dispatch({ type: PUT_EVENT_SUCCESS, payload: res.data });
+            dispatch({ type: PUT_EVENT_SUCCESS });
+            getPlanners();
         })
         .catch(err => {
             if (err.response.data.error) {
