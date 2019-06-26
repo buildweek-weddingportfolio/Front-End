@@ -5,6 +5,7 @@ import SearchBar from "../searchBar/SearchBar";
 
 import {connect} from 'react-redux';
 import{ getPlanners, editSearch } from '../../actions';
+import "./PlannerEvents.scss";
 
 
 
@@ -32,15 +33,17 @@ class PlannersEvents extends React.Component{
         }
 
         return(
-            <>
-            <SearchBar />
-            {planners.map(planner => (
-                <div key={planner.id}>
-                    <PlannerCard  planner={planner}/>
+            <div className="home-page" >
+                <div className="planners-container">
+                    {planners.map(planner => (
+                            <PlannerCard  key={planner.id} planner={planner}/>
+                    ))}
                 </div>
-            ))}
+                <div className="search-half">
+                    <SearchBar />
+                </div>
 
-            </>
+            </div>
         )
     }
 }

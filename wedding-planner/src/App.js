@@ -11,6 +11,7 @@ function App() {
     return (
         <Router>
             <NavBar />
+            <div className="spacer" />
             <Route path= "/dashboard/:id" component={DashBoard} />
             <Route exact path="/" component={PlannerEvents} />
             <Route path="/login" component={Login} />

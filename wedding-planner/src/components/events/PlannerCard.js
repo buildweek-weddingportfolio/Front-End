@@ -3,17 +3,17 @@ import React from 'react';
 
 const PlannerCard = (props) =>{
     return(
-        <>
-            <div>{props.planner.couple_name}</div>
+        <div className="planner-card">
+            <h2>{props.planner.couple_name}</h2>
 
-            <div><img src={props.planner.item_photo} alt={props.planner.couple_name}/></div>
+            <img src={props.planner.item_photo} alt={props.planner.couple_name}/>
 
-            <div>{props.planner.wedding_theme}</div>
-            <div>{props.planner.wedding_date}</div>
+            <p><span>Theme: </span>{props.planner.wedding_theme}</p>
+            <p><span>Date: </span>{props.planner.wedding_date}</p>
 
-            <div>{props.planner.wedding_location}</div>
-            <div>{props.planner.wedding_photographer}</div>
-        </>
+            <p><span>Location: </span>{props.planner.wedding_location}</p>
+            <p><span>Photographer: </span>{props.planner.wedding_photographer}</p>
+        </div>
     )
 }
 
