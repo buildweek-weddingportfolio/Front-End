@@ -6,7 +6,7 @@ import DashBoardBody from './DashBoardBody';
 import DashBoardFooter from './DashBoardFooter';
 
 
- class DashBoard extends React.Component{
+class DashBoard extends React.Component{
 
     componentDidMount(){
         this.props.getPlanners();
@@ -15,8 +15,8 @@ import DashBoardFooter from './DashBoardFooter';
 
 
 
-     render(){
-      
+    render(){
+    
 
          const id = this.props.match.params.id;
          if(!this.props.planners){
