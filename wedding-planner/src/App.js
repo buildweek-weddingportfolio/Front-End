@@ -11,7 +11,7 @@ import DashBoard from './components/dashboard/DashBoard'
 function App() {
     return (
         <Router>
-            <NavBar/>
+            <NavBar />
             <Route path= "/dashboard/:id" component={DashBoard} />
             <Route path="/addEvent" component={AddEvent} />
             <Route exact path="/" component={PlannerEvents} />

@@ -1,6 +1,7 @@
 import {
     LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE,
     REGISTER_START, REGISTER_SUCCESS, REGISTER_FAILURE,
+    LOGOUT_START, LOGOUT_SUCCESS, LOGOUT_FAILURE,
     FETCH_DATA_START, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE,
     POST_EVENT_START, POST_EVENT_SUCCESS, POST_EVENT_FAILURE,
     PUT_EVENT_START, PUT_EVENT_SUCCESS, PUT_EVENT_FAILURE,
@@ -11,8 +12,9 @@ import {
 
 const initialState = {
     planners: [],
-    searchFilter: null,
+    loggedBoolean: false,
     loggingIn: false,
+    loggingOut: false,
     fetchingPlanners: false,
     postingEvent: false,
     puttingEvent: false,
@@ -28,11 +30,13 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 loggingIn: true,
                 error: null,
+                loggedBoolean: false
             }
         case LOGIN_SUCCESS:
             return{
                 ...state, 
                 loggingIn: false,
+                loggedBoolean: true
             }
         
         case LOGIN_FAILURE:
@@ -48,17 +52,40 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 loggingIn: true,
                 error: null,
+                loggedBoolean: false
             }
         case REGISTER_SUCCESS:
             return{
                 ...state, 
                 loggingIn: false,
+                loggedBoolean: true
             }
         
         case REGISTER_FAILURE:
             return{
                 ...state,
                 loggingIn: false,
+                error: action.payload
+            }
+
+
+        case LOGOUT_START:
+            return{
+                ...state,
+                loggingOut: true,
+                error: null,
+            }
+        case LOGOUT_SUCCESS:
+            return{
+                ...state, 
+                loggingOut: false,
+                loggedBoolean: false
+            }
+        
+        case LOGOUT_FAILURE:
+            return{
+                ...state,
+                loggingOut: false,
                 error: action.payload
             }
 
