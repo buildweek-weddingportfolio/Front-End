@@ -20,8 +20,8 @@ class NavBar extends React.Component{
     }
 }
 
-const mapStateToProps = ({userId}) => {
-    return {userId}
+const mapStateToProps = ({ }) => {
+    return { }
 }
 
 export default connect(mapStateToProps)(NavBar);

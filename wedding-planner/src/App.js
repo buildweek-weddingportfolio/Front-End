@@ -5,7 +5,7 @@ import Login from "./components/login/Login";
 import Register from "./components/register/Register";
 import NavBar from "./components/navBar/NavBar";
 import AddEvent from "./components/AddEvent";
-import PlannerEvents from "./components/PlannerEvents";
+import PlannerEvents from "./components/events/PlannerEvents";
 import DashBoard from './components/dashboard/DashBoard'
 
 function App() {

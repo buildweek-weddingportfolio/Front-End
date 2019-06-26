@@ -1,6 +1,7 @@
 import React from 'react';
 
 import PlannerCard from './PlannerCard';
+import SearchBar from "../searchBar/SearchBar";
 
 import {connect} from 'react-redux';
 import{getPlanners} from '../../actions';

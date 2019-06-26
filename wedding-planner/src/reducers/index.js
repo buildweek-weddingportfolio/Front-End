@@ -11,7 +11,7 @@ import {
 
 const initialState = {
     planners: [],
-    userId: null,
+    searchFilter: null,
     loggingIn: false,
     fetchingPlanners: false,
     postingEvent: false,
@@ -33,7 +33,6 @@ export const reducer = (state = initialState, action) => {
             return{
                 ...state, 
                 loggingIn: false,
-                userId: action.payload
             }
         
         case LOGIN_FAILURE:
@@ -54,7 +53,6 @@ export const reducer = (state = initialState, action) => {
             return{
                 ...state, 
                 loggingIn: false,
-                userId: action.payload
             }
         
         case REGISTER_FAILURE:
