@@ -11,6 +11,7 @@ const DashBoardBody = (props) =>{
         props.deleteEvent(id);
     }
     
+    
     return(
         <div>
             <Route path="/dashboard/:id/update/:eventId" render={ props => <UpdateEvent props={props} /> }  />

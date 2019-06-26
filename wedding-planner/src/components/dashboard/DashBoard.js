@@ -18,21 +18,25 @@ class DashBoard extends React.Component{
     render(){
     
 
-        const id = this.props.match.params.id;
-        const events = this.props.planners.filter(event => `${event.user_id}` === id)
+         const id = this.props.match.params.id;
+         if(!this.props.planners){
+             return <h2>.....loading</h2>
+         }else{
 
+             const events = this.props.planners.filter(event => `${event.user_id}` === id)
+             return(
+                 <div className="dashBoard-container">
+                     <DashBoardHeader events={events}/>
+                     <DashBoardBody events={events} 
+                     deleteEvent={this.props.deleteEvent}
+                     update={this.props.putEvent}
+                     />
+                     <DashBoardFooter />
+                 </div>
+             )
+         }
 
-        return(
-            <div>
-                <DashBoardHeader events={events}/>
-                <DashBoardBody events={events} 
-                deleteEvent={this.props.deleteEvent}
-                update={this.props.putEvent}
-                />
-                <DashBoardFooter />
-            </div>
-        )
-    }
+     }
 }
 
 const mapStateToProps = ({planners}) => ({
