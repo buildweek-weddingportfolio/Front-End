@@ -39,7 +39,9 @@ class PlannersEvents extends React.Component{
                             <PlannerCard  key={planner.id} planner={planner}/>
                     ))}
                 </div>
-                <SearchBar />
+                <div className="search-half">
+                    <SearchBar />
+                </div>
 
             </div>
         )

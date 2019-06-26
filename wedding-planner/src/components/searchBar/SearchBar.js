@@ -11,7 +11,7 @@ class SearchBar extends React.Component {
 
     render() {
         return (
-            <div className="search-bar">
+            <div className="search-container">
                 <h2>Search</h2>
                 <form onSubmit={this.search}>
                     <p>Search By:</p>
