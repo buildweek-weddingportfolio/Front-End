@@ -1,3 +1,14 @@
 .dashBoard-container{
     background:red;
+    padding:10px;
+}
+
+.event-card-container{
+    background:blue;
+    display:flex;
+
+}
+.event-card{
+    background:green;
+    width:400px;
 }
