@@ -1,3 +1,26 @@
-.invisible {
-    display: none;
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 60px;
+    width: 100%;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    background: #F2F2F2;
+    box-shadow: 1px 2px 5px 1px lightgray;
+
+    img {
+        flex-grow: 1;
+    }
+
+    a {
+        display: block;
+        text-decoration: none;
+        text-align: center;
+        padding: 5px;
+        margin: 5px;
+        color: #0A235C;
+        font-weight: 700;
+    }
 }
