@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {getPlanners, putEvent} from '../actions'
+import {getPlanners, putEvent} from '../../actions'
 
 
 class UpdateEvent extends React.Component{
@@ -16,12 +16,7 @@ class UpdateEvent extends React.Component{
     }
 
     changeHandler = (e) =>{
-        this.setState({
-
-            [e.target.name]:e.target.value
-        });
-
-        console.log(this.state.couple_name)
+        this.setState({[e.target.name]:e.target.value});
     }
 
     update = (e) =>{
@@ -36,10 +31,13 @@ class UpdateEvent extends React.Component{
             wedding_photographer:this.state.photographer,
             wedding_theme:this.state.wedding_theme
         }
-        console.log(event.couple_name)
 
         if(this.state.couple_name.trim() !== ''){
-            this.props.putEvent(event);
+            this.props.putEvent(event).then(res =>{
+                if(res)
+                this.props.history.push(`/dashboard/${id}`)
+            });
+
         }
     }
 
