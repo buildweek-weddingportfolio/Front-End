@@ -30,7 +30,7 @@ class PlannersEvents extends React.Component{
         })
 
         if (planners.length === 0) {
-            return <Loader type="ball-spin-fade-loader" />
+            return <Loader type="ball-spin-fade-loader" className="homepageLoader"/>
         }
 
         if (this.props.error) {
