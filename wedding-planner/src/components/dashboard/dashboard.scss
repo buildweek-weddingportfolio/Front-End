@@ -1,8 +1,26 @@
 .dashBoard-container{
     background:red;
+}
+
+
+///////////////////Header Start ...........
+.dashBoard-header{
+    background:green;
     padding:10px;
 }
 
+.dashBoard-header nav{
+    display:flex;
+    justify-content: space-between;
+}
+
+/////////////////// Dashboard Header End ...........
+
+
+
+
+
+///////////////////Dashboard Events Start ...........
 .event-card-container{
     background:blue;
     display:flex;
@@ -15,3 +33,40 @@
     margin:10px;
     border:3px solid black;
 }
+
+///////////////////Dashboard Events End ...........
+
+
+///////////////////POST Component Start ...........
+
+.add-form-container{
+    width:350px;
+    margin:0 auto;
+}
+
+
+
+.add-input-container{
+    text-align:center;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0 20px;
+}
+
+.add-input-container input{
+   width:50%;
+   border:1px solid black;
+   padding:10px 2px;
+   margin:5px 0px;
+   border-radius:10px;
+}
+
+.submit{
+    text-align:right;
+}
+
+
+
+
+///////////////////Post Component end ...........

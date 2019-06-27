@@ -6,14 +6,30 @@ import {getPlanners, putEvent} from '../../actions'
 class UpdateEvent extends React.Component{
     // need the ability to add an image
 
-    state = {
-        couple_name:'',
-        item_photo:null,
-        wedding_date:'',
-        wedding_location:'',
-        wedding_photographer:'',
-        wedding_theme:''
+    constructor(props){
+        super(props)
+
+        this.url_userId = this.props.props.match.params.id
+        this.id = localStorage.getItem('userId')
+        this.eventId = this.props.props.match.params.eventId
+
+        if(this.url_userId !== this.id){
+            this.url = this.id
+            this.props.history.push(`/dashboard/${this.id}`)
+        }
+        this.state = {
+            couple_name:'',
+            item_photo:null,
+            wedding_date:'',
+            wedding_location:'',
+            wedding_photographer:'',
+            wedding_theme:''
+        }
+
+        const target = this.props.planners.find(event => `${event.id}` === this.eventId)
+        console.log(this.target)
     }
+
 
     changeHandler = (e) =>{
         this.setState({[e.target.name]:e.target.value});
@@ -21,18 +37,15 @@ class UpdateEvent extends React.Component{
 
     update = (e) =>{
         e.preventDefault();
-        
-        const eventId = this.props.props.match.params.eventId;
-        const id = localStorage.getItem('userId');
         const event = {
-            id:eventId, 
+            id:this.eventId, 
             couple_name:this.state.couple_name,
             item_photo:null,
             wedding_date:this.state.wedding_date,
             wedding_location:this.state.location,
             wedding_photographer:this.state.photographer,
             wedding_theme:this.state.wedding_theme,
-            user_id: id
+            user_id: this.id
         }
 
         if(this.state.couple_name.trim() !== ''){
@@ -41,7 +54,7 @@ class UpdateEvent extends React.Component{
                     this.props.getPlanners().then(res =>{
                         if(res){
 
-                            this.props.props.history.push(`/dashboard/${id}`)
+                            this.props.props.history.push(`/dashboard/${this.id}`)
                         }
                     })
                 }
@@ -51,8 +64,7 @@ class UpdateEvent extends React.Component{
     }
 
     render(){
-        const url = this.props.props.match.params.eventId;
-        const target = this.props.planners.find(event => `${event.id}` === url)
+        const target = this.props.planners.find(event => `${event.id}` === this.eventId)
 
         if(!target){
             return <h2>No target</h2>
