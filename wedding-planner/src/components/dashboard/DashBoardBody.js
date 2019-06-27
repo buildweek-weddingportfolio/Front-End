@@ -24,18 +24,19 @@ const userId = localStorage.getItem('userId')
             <div className="event-card-container">
                 {props.events.map((event) =>(
                     <div className="event-card" key={event.id}>
-                        <div>{event.couple_name}</div>
+                        <h2>{event.couple_name}</h2>
 
-                        <div><img src={event.item_photo} alt={event.couple_name}/></div>
+                    <div><img src={event.item_photo} alt={event.couple_name} />
+                    </div>
             
-                        <div>{event.wedding_theme}</div>
-                        <div>{event.wedding_date}</div>
+                        <p><span>Theme: </span>{event.wedding_theme}</p>
+                        <p><span>Date: </span>{event.wedding_date}</p>
             
-                        <div>{event.wedding_location}</div>
-                        <div>{event.wedding_photographer}</div>
-                        <div>
-                            <div><button onClick={(e) => deleteEv(e,event.id)}>delete</button></div>
-                            <div><Link to={`/dashboard/${userId}/update/${event.id}`}>Update</Link></div>
+                        <p><span>Location: </span>{event.wedding_location}</p>
+                        <p><span>Photographer: </span>{event.wedding_photographer}</p>
+                        <div className="event-actions">
+                            <button onClick={(e) => deleteEv(e,event.id)}>Delete</button>
+                            <Link className="lput-link" to={`/dashboard/${userId}/update/${event.id}`}>Update</Link>
                         </div>
                     </div>
                 ))}
