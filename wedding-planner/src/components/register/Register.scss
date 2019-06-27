@@ -10,7 +10,7 @@
 
     div {
         width: 350px;
-        height: 420px;
+        height: 512px;
         background: white;
         border: 1px solid #dddddd;
         border-radius: 5px;
@@ -20,9 +20,13 @@
         justify-content: space-between;
         align-items: center;
         
-    
+        h1 {
+            margin: 0;
+            margin-top: 10px;
+        }
+
         img {
-            width: 60%;
+            width: 100px;
             height: auto;
             margin-top: 5%;
         }

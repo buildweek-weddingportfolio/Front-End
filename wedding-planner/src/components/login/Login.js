@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { login } from "../../actions";
+import wg_logo from "../../utils/wg_logo.png"
 import "./Login.scss";
 
 class Login extends React.Component {
@@ -13,6 +14,8 @@ class Login extends React.Component {
         return(
             <div className="login">
                 <div>
+                    <h1>Log In</h1>
+                    <img src={wg_logo} alt="Wedding Gram" />
                     <p className="error">{this.props.error}</p>
                     <form onSubmit={this.login}>
                         <input 
