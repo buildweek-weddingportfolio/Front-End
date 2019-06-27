@@ -9,15 +9,15 @@ import './dashboard.scss';
 
 class DashBoard extends React.Component{
 
+
     componentDidMount(){
         const id = localStorage.getItem("userId");
         const url = this.props.match.url;  //  "/dashboard/:id/eventskefosijef
         const check = url.replace("/dashboard/", "");
         if (check !== id) {
             this.props.history.push(`/dashboard/${id}`);
-        } else {
-            this.props.getPlanners();
         }
+            this.props.getPlanners();
     }
 
 

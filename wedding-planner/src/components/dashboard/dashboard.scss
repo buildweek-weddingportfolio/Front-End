@@ -1,38 +1,84 @@
 .dashBoard-container{
-    background:red;
+
+    ///////////////////Header Start ...........
+    .dashBoard-header{
+        background:#0A235C;
+        padding:10px;
+        color:white;
+    }
+    
+    .dashBoard-header nav{
+        display:flex;
+        justify-content: space-between;
+
+        .add-link{
+            color:white;
+            text-decoration:none;
+            &:hover{
+                color:#DDDDDD
+            }
+        }
+    }
+    
+    /////////////////// Dashboard Header End ............
+
+
+
+    ///////////////////Dashboard Events Start ...........
+    .event-card-container{
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .event-card{
+        width:400px;
+        margin:10px;
+        border: 1px solid #DDDDDD;
+        h2{
+            text-align:center;
+        }
+    
+        img{
+            width:100%;
+        }
+        p{
+            margin-left: 6px;
+    
+            span {
+                font-weight: bold;
+            }
+        }
+    
+        .event-actions{
+            display:flex;
+            justify-content: space-around;
+            margin-bottom:10px;
+    
+            button{
+                background:none;
+                border:none;
+                &:hover{
+                    color:#DDDDDD
+                }
+            }
+    
+            .put-link{
+                text-decoration:none;
+                &:hover{
+                    color:#DDDDDD
+                }
+            }
+        }
+    }
 }
 
 
-///////////////////Header Start ...........
-.dashBoard-header{
-    background:green;
-    padding:10px;
-}
-
-.dashBoard-header nav{
-    display:flex;
-    justify-content: space-between;
-}
-
-/////////////////// Dashboard Header End ...........
 
 
 
 
 
-///////////////////Dashboard Events Start ...........
-.event-card-container{
-    background:blue;
-    display:flex;
 
-}
-.event-card{
-    background:green;
-    width:400px;
-    text-align:center;
-    margin:10px;
-    border:3px solid black;
-}
 
 ///////////////////Dashboard Events End ...........
 

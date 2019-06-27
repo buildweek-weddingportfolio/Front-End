@@ -10,13 +10,9 @@ class UpdateEvent extends React.Component{
         super(props)
 
         this.url_userId = this.props.props.match.params.id
-        this.id = localStorage.getItem('userId')
-        this.eventId = this.props.props.match.params.eventId
+        this.id = localStorage.getItem('userId');
+        this.eventId = this.props.props.match.params.eventId;
 
-        if(this.url_userId !== this.id){
-            this.url = this.id
-            this.props.history.push(`/dashboard/${this.id}`)
-        }
         this.state = {
             couple_name:'',
             item_photo:null,
@@ -27,7 +23,6 @@ class UpdateEvent extends React.Component{
         }
 
         const target = this.props.planners.find(event => `${event.id}` === this.eventId)
-        console.log(this.target)
     }
 
 

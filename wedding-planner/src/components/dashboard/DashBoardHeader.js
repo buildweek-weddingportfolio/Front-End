@@ -10,7 +10,7 @@ const DashBoardHeader = (props) =>{
             <nav>
                 <div>Wedding Planner</div>
                 <div>Events ({props.count})</div>
-                <div><Link to={`/dashboard/${id}/add`}>Add Event</Link></div>
+                <div ><Link className="add-link" to={`/dashboard/${id}/add`}>Add Event</Link></div>
             </nav>
         </header>
     )
