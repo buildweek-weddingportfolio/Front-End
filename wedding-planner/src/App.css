@@ -15,6 +15,7 @@
   width: 100%;
   background: white;
   background-image: url("./utils/bg_wallpaper.png");
+  opacity: 0.45;
 }
 
 .white {
