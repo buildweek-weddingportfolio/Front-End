@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { Route } from "react-router-dom";
 import {getPlanners, deleteEvent, putEvent} from '../../actions';
 import DashBoardBody from './DashBoardBody';
 import DashBoardFooter from './DashBoardFooter';
@@ -9,24 +10,35 @@ import './dashboard.scss';
 class DashBoard extends React.Component{
 
     componentDidMount(){
-        this.props.getPlanners();
+        const id = localStorage.getItem("userId");
+        const url = this.props.match.url;  //  "/dashboard/:id/eventskefosijef
+        const check = url.replace("/dashboard/", "");
+        if (check !== id) {
+            this.props.history.push(`/dashboard/${id}`);
+        } else {
+            this.props.getPlanners();
+        }
     }
 
 
 
     render(){
-        const events = this.props.planners.filter(event => `${event.user_id}` === this.id)
-        return(
-            <div className="dashBoard-container">
-                <DashBoardBody events={events}
-                deleteEvent={this.props.deleteEvent}
-                update={this.props.putEvent}
-                props={this.props}
-                />
-                <DashBoardFooter />
-            </div>
-        )
-    }      
+
+        const id = localStorage.getItem("userId");
+             const events = this.props.planners.filter(event => `${event.user_id}` === id)
+             return(
+                 <div className="dashBoard-container">
+                     <Route path="/dashboard/:id" render={props => <DashBoardBody events={events}
+                     deleteEvent={this.props.deleteEvent}
+                     update={this.props.putEvent}
+                     props={props}
+                     />} />
+                     <DashBoardFooter />
+                 </div>
+             )
+         
+
+     }
 }
 
 const mapStateToProps = ({planners}) => ({
