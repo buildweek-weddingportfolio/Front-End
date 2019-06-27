@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { login } from "../../actions";
 import wg_logo from "../../utils/wg_logo.png"
+import Loader from "react-loaders";
 import "./Login.scss";
 
 class Login extends React.Component {
@@ -9,14 +10,18 @@ class Login extends React.Component {
         username: "",
         password: "",
     }
+    // className={this.props.loggingIn ? "loader-active" : "loader-hidden"}
 
     render() {
         return(
             <div className="login">
-                <div>
-                    <h1>Log In</h1>
-                    <img src={wg_logo} alt="Wedding Gram" />
-                    <p className="error">{this.props.error}</p>
+                <div className="login-container">
+                    <h1 className={this.state.username.length === 0 ? null : "clickable"} >Log In</h1>
+                    <div className="img-container">
+                        <img src={wg_logo} alt="Wedding Gram" />
+                        <Loader  type="ball-spin-fade-loader" className={this.props.loggingIn ? "loader-active" : "loader-hidden"} />
+                    </div>
+                    <p className={this.props.error ? "error active" : "error"}>{this.props.error}</p>
                     <form onSubmit={this.login}>
                         <input 
                             type="text"

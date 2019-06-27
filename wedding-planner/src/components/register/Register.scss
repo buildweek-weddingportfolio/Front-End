@@ -23,6 +23,9 @@
         h1 {
             margin: 0;
             margin-top: 10px;
+            margin-bottom: 5%;
+            color: #93a6d1;
+            &.clickable{color: #0A235C}
         }
 
         img {
@@ -30,16 +33,6 @@
             height: auto;
             margin-top: 5%;
         }
-        
-        // h2 {
-        //     margin: 0;
-        //     margin-bottom: 0;
-            
-        //     // ${props => {
-        //     //     if(props.typing !== "") {return css`color: #4664F5;`;}
-        //     //     else {return css`color: lightblue;`;}
-        //     // }}
-        // }
         
         
         .error{
@@ -49,10 +42,7 @@
             font-size: 0.9rem;
             color: red;
             
-            // ${props => {
-            //     if(props.error) {return css`opacity: 1;  transition: opacity 0.5s linear;`;}
-            //     else {return css`opacity: 0;  transition: none;`;}
-            // }}
+
         }
         
         
@@ -63,6 +53,7 @@
             align-items: center;
             height: 65%;
             margin-bottom: 0;
+            padding-bottom: 10px;
             
         
             input {
@@ -72,6 +63,7 @@
                 padding: 9px 0 7px 8px;
                 border: 1px solid #dddddd;
                 border-radius: 5px;
+                &:focus{outline: none; border: 1px solid #93a6d1}
             }
 
             select {
@@ -85,7 +77,7 @@
             
             button {
                 cursor: default;
-                background: lightblue;
+                background: #93a6d1;
                 color: white;
                 border: none;
                 font-weight: bold;
@@ -95,7 +87,7 @@
                 margin-top: 10px;
                 border-radius: 5px;
                 
-                &.clickable {cursor: pointer;  background: #4664F5;}
+                &.clickable {cursor: pointer;  background: #0A235C;}
             
             }
         }

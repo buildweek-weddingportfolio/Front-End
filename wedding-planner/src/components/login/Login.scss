@@ -1,3 +1,6 @@
+$primary-color: #0A235C;
+@import 'loaders.css/src/animations/ball-spin-fade-loader.scss';
+
 .login {
 	max-width: 3500px;
 	width: 100%;
@@ -8,7 +11,7 @@
     align-items: center;
     
 
-    div {
+    .login-container{
         width: 350px;
         height: 380px;
         background: white;
@@ -23,24 +26,39 @@
         h1 {
             margin: 0;
             margin-top: 10px;
+            margin-bottom: 5%;
+            color: #93a6d1;
+            &.clickable{color: #0A235C}
         }
-
-        img {
+        
+        .img-container {
+            position: relative;
             width: 100px;
             height: auto;
             margin-top: 5%;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+
+            .loader {
+                margin: 50%;
+                position: absolute;
+                top: 0;
+                z-index: 10;
+                opacity: 0.5;
+
+                &.loader-active {
+                    display: block;
+                    visibility: visible;
+                }
+    
+                &.loader-hidden {
+                    visibility: hidden;
+                }
+            }
         }
-        
-        // h2 {
-        // 	margin: 0;
-        // 	margin-bottom: 5%;
-        
-        // 	// ${props => {
-        // 	// 	if(props.typing !== "") {return css`color: #4664F5;`;}
-        //     //     else {return css`color: lightblue;`;}
-        // 	// }}
-        
-        // }
         
         .error {
             margin: 0;
@@ -48,11 +66,12 @@
             padding: 0;
             font-size: 0.9rem;
             color: red;
+            opacity: 0;
             
-            // ${props => {
-            //     if(props.error) {return css`opacity: 1;  transition: opacity 0.5s linear;`;}
-            //     else {return css`opacity: 0;  transition: none;`;}
-            // }}
+            &.active {
+                opacity: 1;
+                transition: opacity .7s linear;
+            }
         
         }
         
@@ -69,11 +88,12 @@
                 padding: 9px 0 7px 8px;
                 border: 1px solid #dddddd;
                 border-radius: 5px;
+                &:focus{outline: none; border: 1px solid #93a6d1}
             }
             
             button {
                 cursor: default;
-                background: lightblue;
+                background: #93a6d1;
                 color: white;
                 border: none;
                 font-weight: bold;
@@ -83,7 +103,7 @@
                 margin-top: 10px;
                 border-radius: 5px;
                 
-                &.clickable {cursor: pointer;  background: #4664F5;}
+                &.clickable {cursor: pointer;  background: #0A235C;}
 
             
             }

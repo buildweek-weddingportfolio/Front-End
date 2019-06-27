@@ -15,10 +15,15 @@ class Register extends React.Component {
     }
 
     render() {
+        const clickable = this.state.username.length === 0 ||
+                          this.state.password.length === 0 ||
+                          this.state.email.length    === 0 ||
+                          this.state.city.length     === 0;
+
         return(
             <div className="register">
                 <div>
-                    <h1>Register</h1>
+                    <h1 className={clickable ? null : "clickable"}>Register</h1>
                     <img src={wg_logo} alt="Wedding Gram" />
                     <p className="error">{this.props.error}</p>
                     <form onSubmit={this.register}>
@@ -120,14 +125,7 @@ class Register extends React.Component {
                             <option value="WI">WI</option>
                             <option value="WY">WY</option>
                         </select>
-                        <button className={
-                                    this.state.username.length === 0 ||
-                                    this.state.password.length === 0 ||
-                                    this.state.email.length ===    0 ||
-                                    this.state.city.length ===     0 ?
-                                        null : "clickable"
-                            } 
-                            type="submit">Register</button>
+                        <button className={clickable ? null : "clickable"} type="submit">Register</button>
                     </form>
                 </div>
             </div>

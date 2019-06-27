@@ -1,32 +1,40 @@
-.navbar {
+.navbar-container {
     z-index: 50;
     position: fixed;
     top: 0;
     left: 0;
-    height: 60px;
+    height: 85px;
     width: 100%;
     padding: 0 50px;
-    display: flex;
-    align-items: center;
     background: #F2F2F2;
+    background-image: linear-gradient(to bottom, #f2f2f2, #f5f5f5, #f8f8f8, #fcfcfc, #ffffff);
     box-shadow: 1px 2px 5px 1px lightgray;
+    
+    .navbar {
+        margin: 0 auto;
+        width: 70%;
+        max-width: 800px;
+        display: flex;
+        align-items: center;
 
-    div {
-        flex-grow: 1;
+        div {
+            flex-grow: 1;
 
-        img {
-            width: 50px;
-            height: auto;
+            img {
+                width: 80px;
+                height: auto;
+            }
         }
-    }
 
-    a {
-        display: block;
-        text-decoration: none;
-        text-align: center;
-        padding: 5px;
-        margin: 5px;
-        color: #0A235C;
-        font-weight: 700;
+        a {
+            display: block;
+            text-decoration: none;
+            text-align: center;
+            font-size: 1.125rem;
+            padding: 5px;
+            margin: 5px;
+            color: #0A235C;
+            font-weight: 700;
+        }
     }
 }
