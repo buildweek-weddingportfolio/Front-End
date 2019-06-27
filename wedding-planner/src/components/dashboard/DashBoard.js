@@ -15,9 +15,8 @@ class DashBoard extends React.Component{
         const check = url.replace("/dashboard/", "");
         if (check !== id) {
             this.props.history.push(`/dashboard/${id}`);
-        } else {
-            this.props.getPlanners();
         }
+            this.props.getPlanners();
     }
 
 

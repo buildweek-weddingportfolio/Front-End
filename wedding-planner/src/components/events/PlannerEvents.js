@@ -5,6 +5,7 @@ import SearchBar from "../searchBar/SearchBar";
 
 import {connect} from 'react-redux';
 import{ getPlanners, editSearch } from '../../actions';
+import Loader from "react-loaders";
 import "./PlannerEvents.scss";
 
 
@@ -27,6 +28,10 @@ class PlannersEvents extends React.Component{
                    plannerEach.wedding_location.includes(location) &&
                    plannerEach.wedding_theme.includes(theme)
         })
+
+        if (planners.length === 0) {
+            return <Loader type="ball-spin-fade-loader" className="homepageLoader"/>
+        }
 
         if (this.props.error) {
             return <h1>{this.props.error}</h1>

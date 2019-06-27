@@ -1,6 +1,7 @@
 import React from "react";
 import { editSearch } from "../../actions";
 import { connect } from "react-redux";
+import "./SearchBar.scss";
 
 class SearchBar extends React.Component {
     state = {
@@ -15,7 +16,7 @@ class SearchBar extends React.Component {
                 <h2>Search</h2>
                 <form onSubmit={this.search}>
                     <p>Search By:</p>
-                    <label for="coupleName">Couple's Name</label>
+                    <label htmlFor="coupleName">Couple's Name</label>
                     <input 
                         type="text"
                         id="coupleName"
@@ -23,7 +24,7 @@ class SearchBar extends React.Component {
                         value={this.state.coupleName}
                         onChange={this.handleChanges}
                     />
-                    <label for="location">Location</label>
+                    <label htmlFor="location">Location</label>
                     <input 
                         type="text"
                         id="location"
@@ -31,7 +32,7 @@ class SearchBar extends React.Component {
                         value={this.state.location}
                         onChange={this.handleChanges}
                     />
-                    <label for="theme">Wedding Theme</label>
+                    <label htmlFor="theme">Wedding Theme</label>
                     <input 
                         type="text"
                         id="theme"

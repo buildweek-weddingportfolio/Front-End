@@ -1,3 +1,10 @@
+.homepageLoader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+
 .home-page {
     display: flex;
     width: 800px;
@@ -40,37 +47,5 @@
         position: fixed;
         left: 58%;
 
-        .search-container {
-            width: auto;
-
-            h2 {
-                text-align: center;
-            }
-
-            form {
-                min-width: 100px;
-                width: 80%;
-                margin: 0 auto;
-                padding: 15px;
-                display: flex;
-                flex-flow: column;
-                background: #F2F2F2;
-                box-shadow: 1px 2px 5px 1px lightgray;
-
-                label {
-                    font-weight: bold;
-                    margin-bottom: 5px;
-                }
-
-                input {
-                    margin-bottom: 20px;
-                    padding: 5px 0;
-                }
-
-                button {
-
-                }
-            }
-        }
     }
 }

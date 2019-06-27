@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { register } from "../../actions";
 import wg_logo from "../../utils/wg_logo.png"
+import Loader from "react-loaders";
 import "./Register.scss";
 
 class Register extends React.Component {
@@ -15,12 +16,20 @@ class Register extends React.Component {
     }
 
     render() {
+        const clickable = this.state.username.length === 0 ||
+                          this.state.password.length === 0 ||
+                          this.state.email.length    === 0 ||
+                          this.state.city.length     === 0;
+
         return(
             <div className="register">
-                <div>
-                    <h1>Register</h1>
-                    <img src={wg_logo} alt="Wedding Gram" />
-                    <p className="error">{this.props.error}</p>
+                <div className="register-container">
+                    <h1 className={clickable ? null : "clickable"}>Register</h1>
+                    <div className="img-container">
+                        <img src={wg_logo} alt="Wedding Gram" />
+                        <Loader  type="ball-spin-fade-loader" className={this.props.loggingIn ? "loader-active" : "loader-hidden"} />
+                    </div>
+                    <p className={this.props.error ? "error active" : "error"}>{this.props.error}</p>
                     <form onSubmit={this.register}>
                         <input 
                             type="text"
@@ -120,14 +129,7 @@ class Register extends React.Component {
                             <option value="WI">WI</option>
                             <option value="WY">WY</option>
                         </select>
-                        <button className={
-                                    this.state.username.length === 0 ||
-                                    this.state.password.length === 0 ||
-                                    this.state.email.length ===    0 ||
-                                    this.state.city.length ===     0 ?
-                                        null : "clickable"
-                            } 
-                            type="submit">Register</button>
+                        <button className={clickable ? null : "clickable"} type="submit">Register</button>
                     </form>
                 </div>
             </div>

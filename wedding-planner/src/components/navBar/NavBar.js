@@ -21,23 +21,27 @@ class NavBar extends React.Component{
         if (this.props.loggedBoolean) {
             const id = localStorage.getItem("userId")
             return (
-                <nav className="navbar">
-                    <div><img src={wg_logo} alt="WeddingGram Logo" /></div>
-                    <a href="https://wedinggram.netlify.com">LEARN MORE</a>
-                    <NavLink activeClassName="active" to="/">HOME</NavLink>
-                    <NavLink activeClassName="active"  to={`/dashboard/${id}`}>DASHBOARD</NavLink>
-                    <NavLink activeClassName="active"  onClick={this.props.logout} to="/">LOGOUT</NavLink>
-                </nav>
+                <div className="navbar-container">
+                    <nav className="navbar">
+                        <div><img src={wg_logo} alt="WeddingGram Logo" /></div>
+                        <a href="https://wedinggram.netlify.com">LEARN MORE</a>
+                        <NavLink activeClassName="active" to="/">HOME</NavLink>
+                        <NavLink activeClassName="active"  to={`/dashboard/${id}`}>DASHBOARD</NavLink>
+                        <NavLink activeClassName="active"  onClick={this.props.logout} to="/">LOGOUT</NavLink>
+                    </nav>
+                </div>
             )
         } else {
             return (
-                <nav className="navbar">
-                    <div><img src={wg_logo} alt="WeddingGram Logo" /></div>
-                    <a href="https://wedinggram.netlify.com">LEARN MORE</a>
-                    <NavLink activeClassName="active"  to="/">HOME</NavLink>
-                    <NavLink activeClassName="active"  to="/login">LOGIN</NavLink>
-                    <NavLink activeClassName="active"  to="/register">REGISTER</NavLink>
-                </nav>
+                <div className="navbar-container">
+                    <nav className="navbar">
+                        <div><img src={wg_logo} alt="WeddingGram Logo" /></div>
+                        <a href="https://wedinggram.netlify.com">LEARN MORE</a>
+                        <NavLink activeClassName="active"  to="/">HOME</NavLink>
+                        <NavLink activeClassName="active"  to="/login">LOGIN</NavLink>
+                        <NavLink activeClassName="active"  to="/register">REGISTER</NavLink>
+                    </nav>
+                </div>
             );
         }
     }
