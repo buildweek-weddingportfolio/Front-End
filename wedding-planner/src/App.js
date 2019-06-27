@@ -13,6 +13,8 @@ function App() {
         <Router>
             <NavBar />
             <div className="spacer" />
+            <div className="wallpaper" />
+            <div className="white" />
             <PrivateRoute path= "/dashboard" component={DashBoard} />
             <Route exact path="/" component={PlannerEvents} />
             <Route path="/login" component={Login} />
