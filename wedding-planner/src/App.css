@@ -8,6 +8,25 @@
   height: 85px;
 }
 
+.wallpaper {
+  z-index: -2;
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  background: white;
+  background-image: url("./utils/bg_wallpaper.png");
+}
+
+.white {
+  z-index: -1;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100vh;
+  width: 90%;
+  background: white;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
