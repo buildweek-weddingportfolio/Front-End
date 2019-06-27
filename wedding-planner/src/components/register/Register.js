@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { register } from "../../actions";
 import wg_logo from "../../utils/wg_logo.png"
+import Loader from "react-loaders";
 import "./Register.scss";
 
 class Register extends React.Component {
@@ -22,10 +23,13 @@ class Register extends React.Component {
 
         return(
             <div className="register">
-                <div>
+                <div className="register-container">
                     <h1 className={clickable ? null : "clickable"}>Register</h1>
-                    <img src={wg_logo} alt="Wedding Gram" />
-                    <p className="error">{this.props.error}</p>
+                    <div className="img-container">
+                        <img src={wg_logo} alt="Wedding Gram" />
+                        <Loader  type="ball-spin-fade-loader" className={this.props.loggingIn ? "loader-active" : "loader-hidden"} />
+                    </div>
+                    <p className={this.props.error ? "error active" : "error"}>{this.props.error}</p>
                     <form onSubmit={this.register}>
                         <input 
                             type="text"

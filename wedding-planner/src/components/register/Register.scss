@@ -1,3 +1,6 @@
+$primary-color: #0A235C;
+@import 'loaders.css/src/animations/ball-spin-fade-loader.scss';
+
 .register {
 	max-width: 3500px;
 	width: 100%;
@@ -8,7 +11,7 @@
     align-items: center;
     
 
-    div {
+    .register-container {
         width: 350px;
         height: 512px;
         background: white;
@@ -28,10 +31,33 @@
             &.clickable{color: #0A235C}
         }
 
-        img {
+        .img-container {
+            position: relative;
             width: 100px;
             height: auto;
             margin-top: 5%;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+
+            .loader {
+                margin: 50%;
+                position: absolute;
+                top: 0;
+                z-index: 10;
+                opacity: 0.2;
+
+                &.loader-active {
+                    display: block;
+                    visibility: visible;
+                }
+    
+                &.loader-hidden {
+                    visibility: hidden;
+                }
+            }
         }
         
         
