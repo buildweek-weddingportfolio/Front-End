@@ -14,8 +14,9 @@ $primary-color: #0A235C;
     .login-container{
         width: 350px;
         height: 380px;
-        background: white;
-        border: 1px solid #dddddd;
+        background: #F2F2F2;
+        background-image: linear-gradient(to bottom, #f2f2f2, #f5f5f5, #f8f8f8, #fcfcfc, #ffffff);
+        box-shadow: 1px 2px 5px 1px lightgray;
         border-radius: 5px;
         padding: 10px 1px;
         display: flex;
@@ -101,7 +102,7 @@ $primary-color: #0A235C;
                 height: 30px;
                 padding: 9px 0 7px 8px;
                 margin-top: 10px;
-                border-radius: 5px;
+                border-radius: 3px;
                 
                 &.clickable {cursor: pointer;  background: #0A235C;}
 

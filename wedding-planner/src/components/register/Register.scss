@@ -14,8 +14,9 @@ $primary-color: #0A235C;
     .register-container {
         width: 350px;
         height: 512px;
-        background: white;
-        border: 1px solid #dddddd;
+        background: #F2F2F2;
+        background-image: linear-gradient(to bottom, #f2f2f2, #f5f5f5, #f8f8f8, #fcfcfc, #ffffff);
+        box-shadow: 1px 2px 5px 1px lightgray;
         border-radius: 5px;
         padding: 10px 1px;
         display: flex;
@@ -88,7 +89,7 @@ $primary-color: #0A235C;
                 height: 36px;
                 padding: 9px 0 7px 8px;
                 border: 1px solid #dddddd;
-                border-radius: 5px;
+                border-radius: 3px;
                 &:focus{outline: none; border: 1px solid #93a6d1}
             }
 

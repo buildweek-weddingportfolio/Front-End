@@ -12,8 +12,9 @@
     
     .navbar {
         margin: 0 auto;
-        width: 70%;
-        max-width: 800px;
+        padding-left: 4%;
+        width: 85%;
+        // max-width: 800px;
         display: flex;
         align-items: center;
 
@@ -33,8 +34,14 @@
             font-size: 1.125rem;
             padding: 5px;
             margin: 5px;
+            margin-left: 50px;
             color: #0A235C;
             font-weight: 700;
         }
     }
+}
+
+
+.nothing{
+    color: #c2ebe6
 }
