@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { login } from "../../actions";
+import { login, noError } from "../../actions";
 import wg_logo from "../../utils/wg_logo.png"
 import Loader from "react-loaders";
 import "./Login.scss";
@@ -46,6 +46,11 @@ class Login extends React.Component {
         );
     }
 
+
+    componentDidMount() {
+        this.props.noError();
+    }
+
     handleChanges = e => {
         e.preventDefault();
         this.setState({
@@ -77,4 +82,4 @@ const mapStateToProps = ({ loggingIn, error }) => {
     };
 }
 
-export default connect(mapStateToProps, {login} )(Login);
+export default connect(mapStateToProps, { login, noError } )(Login);
