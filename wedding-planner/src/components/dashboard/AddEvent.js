@@ -46,7 +46,8 @@ class AddEvent extends React.Component{
             wedding_date: this.state.wedding_date,
             wedding_location: this.state.wedding_location,
             item_photo:this.state.item_photo,
-            user_id:this.id
+            user_id:this.id,
+            wedding_photographer: "TBA",
         }
 
 

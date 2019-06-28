@@ -26,10 +26,10 @@ class UpdateEvent extends React.Component{
 
         this.state = {
             couple_name: !this.target ? "" : this.target.couple_name,
-            item_photo:'',
+            item_photo: this.target.item_photo ? this.target.item_photo : '',
             wedding_date: !this.target ? "" : this.target.wedding_date,
             wedding_location: !this.target ? "" : this.target.wedding_location,
-            wedding_photographer: this.target ? this.target.wedding_photographer === "" ? this.target.wedding_photographer : "TBA" : "TBA",
+            wedding_photographer: this.target ? this.target.wedding_photographer.trim() !== "" ? this.target.wedding_photographer : "TBA" : "TBA",
             wedding_theme: !this.target ? "" : this.target.wedding_theme
         }
 
@@ -44,13 +44,14 @@ class UpdateEvent extends React.Component{
         e.preventDefault();
         const photographerCheck = this.state.wedding_photographer.trim()
         const photographer = photographerCheck === "" ? "TBA" : photographerCheck;
+        console.log(photographerCheck);
         const event = {
             id:this.eventId, 
             couple_name:this.state.couple_name.trim(),
             item_photo:this.state.item_photo,
             wedding_date:this.state.wedding_date,
             wedding_location:this.state.wedding_location.trim(),
-            wedding_photographer:photographer,
+            wedding_photographer: photographer,
             wedding_theme:this.state.wedding_theme,
             user_id: this.id
         }
@@ -123,14 +124,14 @@ class UpdateEvent extends React.Component{
                         placeholder="Wedding Location"
                         />
 
-                    <div className="photo-select">
+                    {/* <div className="photo-select">
                         <label>Wedding Photo:</label>
                         <select onChange={this.changeHandler} name="item_photo">
                         {images.map(image =>(
                             <option value={image.url}>{image.name}</option>
                         ))}
                         </select>
-                    </div>
+                    </div> */}
 
                     <div className="form-buttons">
                         <button type="button" onClick={this.dashboard}>Cancel</button>
