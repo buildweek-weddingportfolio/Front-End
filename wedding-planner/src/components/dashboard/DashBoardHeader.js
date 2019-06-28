@@ -8,9 +8,9 @@ const DashBoardHeader = (props) =>{
     return(
         <header className="dashBoard-header">
             <nav>
-                <div>Wedding Planner</div>
-                <div>Events ({props.count})</div>
-                <div ><Link className="add-link" to={`/dashboard/${id}/add`}>Add Event</Link></div>
+                <div>Wedding Planner Dashboard</div>
+                <Link className="add-link" to={`/dashboard/${id}/add`}>Add Event</Link>
+                <div>Total Events Posted: {props.count}</div>
             </nav>
         </header>
     )

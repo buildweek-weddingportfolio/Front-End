@@ -22,17 +22,17 @@ class UpdateEvent extends React.Component{
         this.url_userId = this.props.props.match.params.id
         this.id = localStorage.getItem('userId');
         this.eventId = this.props.props.match.params.eventId;
+        this.target = this.props.planners.find(event => `${event.id}` === this.eventId)
 
         this.state = {
-            couple_name:'',
+            couple_name: !this.target ? "" : this.target.couple_name,
             item_photo:'',
-            wedding_date:'',
-            wedding_location:'',
-            wedding_photographer:'TBA',
-            wedding_theme:''
+            wedding_date: !this.target ? "" : this.target.wedding_date,
+            wedding_location: !this.target ? "" : this.target.wedding_location,
+            wedding_photographer: this.target ? this.target.wedding_photographer === "" ? this.target.wedding_photographer : "TBA" : "TBA",
+            wedding_theme: !this.target ? "" : this.target.wedding_theme
         }
 
-        const target = this.props.planners.find(event => `${event.id}` === this.eventId)
     }
 
 
@@ -42,10 +42,8 @@ class UpdateEvent extends React.Component{
 
     update = (e) =>{
         e.preventDefault();
-        const photographer = this.state.wedding_photographer.trim()
-        if(photographer.trim() === ''){
-            photographer ='TBA'
-        }
+        const photographerCheck = this.state.wedding_photographer.trim()
+        const photographer = photographerCheck === "" ? "TBA" : photographerCheck;
         const event = {
             id:this.eventId, 
             couple_name:this.state.couple_name.trim(),
@@ -74,10 +72,14 @@ class UpdateEvent extends React.Component{
         }
     }
 
-    render(){
-        const target = this.props.planners.find(event => `${event.id}` === this.eventId)
+    dashboard = e => {
+        e.preventDefault();
+        this.props.props.history.push(`/dashboard/${this.id}`)
+    }
 
-        if(!target){
+    render(){
+
+        if(!this.target){
             return <h2>No target</h2>
         }
         
@@ -85,51 +87,43 @@ class UpdateEvent extends React.Component{
             <div className="add-form-container">
                 <h2>Update event</h2>
                 <form onSubmit={this.update}>
-                    <div className="add-input-container">
                     <label>Couples Name:</label>
                         <input 
                         type="text"
                         value={this.state.couple_name}
                         onChange={this.changeHandler}
                         name="couple_name"
-                        placeholder={target.couple_name}
+                        placeholder="Couple's Name"
                         required
                         />
-                    </div>
-                    <div className="add-input-container">
                     <label> Theme: </label>
                         <input 
                         type="text"
                         value={this.state.wedding_theme}
                         onChange={this.changeHandler}
                         name="wedding_theme"
-                        placeholder={target.wedding_theme}
+                        placeholder="Wedding Theme"
                         />
-                    </div>
                     
-                    <div className="add-input-container">
                     <label>Wedding Date:</label>
                         <input 
                         type="date"
                         value={this.state.wedding_date}
                         onChange={this.changeHandler}
                         name="wedding_date"
-                        placeholder={target.wedding_date}
+                        placeholder="Wedding Date"
                         />
-                    </div>
 
-                    <div className="add-input-container">
                         <label>Wedding Location:</label>
                         <input 
                         type="text"
                         value={this.state.wedding_location}
                         onChange={this.changeHandler}
                         name="wedding_location"
-                        placeholder={target.wedding_location}
+                        placeholder="Wedding Location"
                         />
-                    </div>
 
-                    <div className="add-input-container">
+                    <div className="photo-select">
                         <label>Wedding Photo:</label>
                         <select onChange={this.changeHandler} name="item_photo">
                         {images.map(image =>(
@@ -138,10 +132,10 @@ class UpdateEvent extends React.Component{
                         </select>
                     </div>
 
-                    <div className="submit">
-                        <button>Update Event</button>
+                    <div className="form-buttons">
+                        <button type="button" onClick={this.dashboard}>Cancel</button>
+                        <button type="submit">Update Post</button>
                     </div>
-
                 </form>
             </div>
 

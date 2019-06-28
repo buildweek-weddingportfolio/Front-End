@@ -3,17 +3,24 @@
     ///////////////////Header Start ...........
     .dashBoard-header{
         background:#0A235C;
-        padding:10px;
+        padding: 10px;
         color:white;
     }
     
     .dashBoard-header nav{
+        width: 80%;
+        margin: 0 auto;
         display:flex;
         justify-content: space-between;
-
+        
+        * {
+            cursor: default;
+        }
         .add-link{
+            cursor: pointer;
             color:white;
             text-decoration:none;
+            height: 100%;
             &:hover{
                 color:#DDDDDD
             }
@@ -26,6 +33,8 @@
 
     ///////////////////Dashboard Events Start ...........
     .event-card-container{
+        margin: 0 auto;
+        width: 80%;
         display:flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -33,14 +42,23 @@
     .event-card{
         width:400px;
         margin:10px;
-        border: 1px solid #DDDDDD;
-        background:white;
-        h2{
-            text-align:center;
+        background: white;
+        background-image: linear-gradient(to bottom, #f2f2f2 73%, #f5f5f5, #f8f8f8, #fcfcfc, #ffffff);
+        box-shadow: 0px 10px 5px -5px lightgray;
+        h2 {
+            font-family: cinque-donne, cursive;
+            text-align: center;
+            background: #FFEDEA;
+            margin: 0;
+            font-size: 2em;
+            padding: .18em 0;
+            color: #CE918B;
         }
     
         img{
-            width:100%;
+            width: 100%;
+            max-height: 250px;
+            object-fit: cover;
         }
         p{
             margin-left: 6px;
@@ -55,18 +73,20 @@
             justify-content: space-around;
             margin-bottom:10px;
     
-            button{
-                background:none;
-                border:none;
+            a, button {
+                cursor: pointer;
+                font-size: 1rem;
+                text-decoration: none;
+                background: #0A235C;
+                border: 2px solid #0A235C;
+                color: white;
+                border-radius: 3px;
+                padding: 5px 16px;
+                margin: 7px 0 10px;
                 &:hover{
-                    color:#DDDDDD
-                }
-            }
-    
-            .put-link{
-                text-decoration:none;
-                &:hover{
-                    color:#DDDDDD
+                    color: #0A235C;
+                    background: white;
+                    transition: background 0.3s ease-in-out;
                 }
             }
         }
@@ -87,32 +107,83 @@
 ///////////////////POST Component Start ...........
 
 .add-form-container{
-    width:350px;
-    margin:0 auto;
+    width: 350px;
+    margin: 20px auto;
+    background: #F2F2F2;
+    background-image: linear-gradient(to bottom, #f2f2f2, #f5f5f5, #f8f8f8, #fcfcfc, #ffffff);
+    box-shadow: 1px 2px 5px 1px lightgray;
+    padding-top: 15px;
+    
+    
+    h2 {
+        text-align: center;
+        color: #0A235C;
+        margin-bottom: 1rem;
+        margin-top: 0
+    }
+    
+    form {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            margin-left: 10px;
+
+        }
+
+        input {
+            width: 90%;
+            height: 36px;
+            margin-left: 10px;
+            margin-bottom: 15px;
+            padding: 9px 0 7px 8px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            &:focus{outline: none; border: 1px solid #93a6d1}
+            &::-webkit-inner-spin-button{display: none;}
+        }
+
+        .photo-select {
+            width: 90%;
+            display: flex;
+
+            select {
+                margin-left: 25px;
+                flex-grow: 1;
+                border-radius: 5px;
+                border: 1px solid #dddddd;
+
+            }
+        }
+
+        .form-buttons {
+            margin: 0 auto;
+            width: 90%;
+            display: flex;
+
+            button {
+                cursor: pointer;
+                background: #0A235C;
+                border: 2px solid #0A235C;
+                color: white;
+                font-weight: bold;
+                width: 40%;
+                padding: 7px 0;
+                margin: 15px auto;
+                border-radius: 3px;
+                &:hover{
+                    color: #0A235C;
+                    background: white;
+                    transition: background 0.3s ease-in-out;
+                }
+            }
+        }
+    }
 }
-
-
-
-.add-input-container{
-    text-align:center;
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    padding:0 20px;
-}
-
-.add-input-container input{
-   width:50%;
-   border:1px solid black;
-   padding:10px 2px;
-   margin:5px 0px;
-   border-radius:10px;
-}
-
-.submit{
-    text-align:right;
-}
-
 
 
 
