@@ -33,7 +33,7 @@ class DashBoard extends React.Component{
                      update={this.props.putEvent}
                      props={props}
                      />} />
-                     <DashBoardFooter />
+                     <div style={{height: "30px"}} />
                  </div>
              )
          
