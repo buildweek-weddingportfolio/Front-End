@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { register } from "../../actions";
+import { register, noError } from "../../actions";
 import wg_logo from "../../utils/wg_logo.png"
 import Loader from "react-loaders";
 import "./Register.scss";
@@ -136,6 +136,10 @@ class Register extends React.Component {
         );
     }
 
+    componentDidMount() {
+        this.props.noError();
+    }
+
     handleChanges = e => {
         e.preventDefault();
         this.setState({
@@ -169,4 +173,4 @@ const mapStateToProps = ({ loggingIn, error }) => {
     };
 }
 
-export default connect(mapStateToProps, {register} )(Register);
+export default connect(mapStateToProps, { register, noError } )(Register);

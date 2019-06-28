@@ -202,3 +202,11 @@ export const putEvent = event => dispatch => {
             } else { dispatch({ type: PUT_EVENT_FAILURE, payload: `${err}`}); }
         })
 }
+
+//================================NOERRORS================================//
+export const NO_ERROR = "NO_ERROR";
+export const noError = () => {
+    return {
+        type: NO_ERROR,
+    }
+}

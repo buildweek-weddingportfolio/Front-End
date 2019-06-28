@@ -8,6 +8,7 @@ import {
     POST_EVENT_START, POST_EVENT_SUCCESS, POST_EVENT_FAILURE,
     PUT_EVENT_START, PUT_EVENT_SUCCESS, PUT_EVENT_FAILURE,
     DELETE_EVENT_START, DELETE_EVENT_SUCCESS, DELETE_EVENT_FAILURE,
+    NO_ERROR,
 } from '../actions';
 
 
@@ -235,6 +236,14 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 deletingEvent: false,
                 error: action.payload
+            }
+
+        //================================DELETEEVENT================================//
+
+        case NO_ERROR:
+            return {
+                ...state,
+                error: null,
             }
 
             
