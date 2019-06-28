@@ -155,17 +155,19 @@
             }
         }
 
-        button {
-            cursor: pointer;
-            background: #0A235C;
-            color: white;
-            border: none;
-            font-weight: bold;
-            width: 60%;
-            height: 40px;
-            padding: 9px 0 7px 8px;
-            margin: 10px auto;
-            border-radius: 3px;
+        .form-buttons {
+            button {
+                cursor: pointer;
+                background: #0A235C;
+                color: white;
+                border: none;
+                font-weight: bold;
+                width: 60%;
+                height: 40px;
+                padding: 9px 0 7px 8px;
+                margin: 10px auto;
+                border-radius: 3px;
+            }
         }
     }
 }

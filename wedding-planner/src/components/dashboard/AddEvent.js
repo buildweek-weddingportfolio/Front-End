@@ -68,6 +68,11 @@ class AddEvent extends React.Component{
         console.log(e.target.value)
     }
 
+    dashboard = e => {
+        e.preventDefault();
+        this.props.props.history.push(`/dashboard/${this.id}`)
+    }
+
 
 
     render(){
@@ -120,7 +125,10 @@ class AddEvent extends React.Component{
                                 </select>
                             </div>
 
-                            <button>Add Post</button>
+                            <div className="form-buttons">
+                                <button type="button" onClick={this.dashboard}>Cancel</button>
+                                <button type="submit">Add Post</button>
+                            </div>
 
                     </form>
                 </div>

@@ -72,6 +72,11 @@ class UpdateEvent extends React.Component{
         }
     }
 
+    dashboard = e => {
+        e.preventDefault();
+        this.props.props.history.push(`/dashboard/${this.id}`)
+    }
+
     render(){
 
         if(!this.target){
@@ -127,8 +132,10 @@ class UpdateEvent extends React.Component{
                         </select>
                     </div>
 
-                        <button>Update Event</button>
-
+                    <div className="form-buttons">
+                        <button type="button" onClick={this.dashboard}>Cancel</button>
+                        <button type="submit">Add Post</button>
+                    </div>
                 </form>
             </div>
 
