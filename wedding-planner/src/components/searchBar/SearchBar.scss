@@ -46,13 +46,18 @@
             cursor: pointer;
             background: #0A235C;
             color: white;
-            border: none;
+            border: 2px solid #0A235C;
             font-weight: bold;
             width: 60%;
             height: 40px;
             padding: 9px 0 7px 8px;
             margin: 10px auto;
             border-radius: 3px;
+            &:hover{
+                color: #0A235C;
+                background: white;
+                transition: background 0.3s ease-in-out;
+            }
         }
     }
 }
