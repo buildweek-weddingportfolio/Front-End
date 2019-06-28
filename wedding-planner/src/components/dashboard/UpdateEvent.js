@@ -26,7 +26,7 @@ class UpdateEvent extends React.Component{
 
         this.state = {
             couple_name: !this.target ? "" : this.target.couple_name,
-            item_photo: this.target.item_photo ? this.target.item_photo : '',
+            item_photo: this.target ? this.target.item_photo : '',
             wedding_date: !this.target ? "" : this.target.wedding_date,
             wedding_location: !this.target ? "" : this.target.wedding_location,
             wedding_photographer: this.target ? this.target.wedding_photographer.trim() !== "" ? this.target.wedding_photographer : "TBA" : "TBA",
@@ -126,7 +126,7 @@ class UpdateEvent extends React.Component{
 
                     {/* <div className="photo-select">
                         <label>Wedding Photo:</label>
-                        <select onChange={this.changeHandler} name="item_photo">
+                        <select onChange={this.changeHandler} name="item_photo" />
                         {images.map(image =>(
                             <option value={image.url}>{image.name}</option>
                         ))}
