@@ -25,12 +25,12 @@ class UpdateEvent extends React.Component{
         this.target = this.props.planners.find(event => `${event.id}` === this.eventId)
 
         this.state = {
-            couple_name: this.target.couple_name,
+            couple_name: !this.target ? "" : this.target.couple_name,
             item_photo:'',
-            wedding_date: this.target.wedding_date,
-            wedding_location: this.target.wedding_location,
-            wedding_photographer: this.target.wedding_photographer === "" ? "TBA" : this.target.wedding_photographer,
-            wedding_theme: this.target.wedding_theme
+            wedding_date: !this.target ? "" : this.target.wedding_date,
+            wedding_location: !this.target ? "" : this.target.wedding_location,
+            wedding_photographer: this.target ? this.target.wedding_photographer === "" ? this.target.wedding_photographer : "TBA" : "TBA",
+            wedding_theme: !this.target ? "" : this.target.wedding_theme
         }
 
     }
@@ -134,7 +134,7 @@ class UpdateEvent extends React.Component{
 
                     <div className="form-buttons">
                         <button type="button" onClick={this.dashboard}>Cancel</button>
-                        <button type="submit">Add Post</button>
+                        <button type="submit">Update Post</button>
                     </div>
                 </form>
             </div>
