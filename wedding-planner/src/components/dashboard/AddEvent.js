@@ -75,18 +75,15 @@ class AddEvent extends React.Component{
                 <div className="add-form-container">
                     <h2>Add an event</h2>
                     <form onSubmit={this.addPost}>
-                        <div className="add-input-container">
                         <label>Couples Name:</label>
                             <input 
                             type="text"
                             value={this.state.couple_name}
                             onChange={this.changeHandler}
                             name="couple_name"
-                            placeholder="Couples Names"
+                            placeholder="Couple's Names"
                             required
                             />
-                        </div>
-                        <div className="add-input-container">
                         <label> Theme: </label>
                             <input 
                             type="text"
@@ -95,9 +92,7 @@ class AddEvent extends React.Component{
                             name="wedding_theme"
                             placeholder="Wedding Theme"
                             />
-                        </div>
                         
-                        <div className="add-input-container">
                         <label>Wedding Date:</label>
                             <input 
                             type="date"
@@ -106,9 +101,7 @@ class AddEvent extends React.Component{
                             name="wedding_date"
                             placeholder="Wedding Date"
                             />
-                        </div>
 
-                        <div className="add-input-container">
                             <label>Wedding Location:</label>
                             <input 
                             type="text"
@@ -117,20 +110,17 @@ class AddEvent extends React.Component{
                             name="wedding_location"
                             placeholder="Wedding Location"
                             />
-                        </div>
 
-                        <div className="add-input-container">
-                            <label>Wedding Photo:</label>
-                            <select onChange={this.changeHandler} name="item_photo">
-                            {images.map(image =>(
-                                <option value={image.url}>{image.name}</option>
-                            ))}
-                            </select>
-                        </div>
+                            <div className="photo-select" >
+                                <label>Wedding Photo:</label>
+                                <select onChange={this.changeHandler} name="item_photo">
+                                {images.map(image =>(
+                                    <option value={image.url}>{image.name}</option>
+                                ))}
+                                </select>
+                            </div>
 
-                        <div className="submit">
                             <button>Add Post</button>
-                        </div>
 
                     </form>
                 </div>

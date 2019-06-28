@@ -36,7 +36,7 @@ const userId = localStorage.getItem('userId')
                         <p><span>Photographer: </span>{event.wedding_photographer}</p>
                         <div className="event-actions">
                             <button onClick={(e) => deleteEv(e,event.id)}>Delete</button>
-                            <Link className="lput-link" to={`/dashboard/${userId}/update/${event.id}`}>Update</Link>
+                            <Link to={`/dashboard/${userId}/update/${event.id}`}>Update</Link>
                         </div>
                     </div>
                 ))}
